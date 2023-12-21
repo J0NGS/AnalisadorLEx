@@ -1,0 +1,324 @@
+{ name='Keyword', value='Class:', line='0', column='0'}
+{ name='Class identifier', value='Customer', line='0', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='1', column='0'}
+{ name='Class identifier', value='Person', line='2', column='0'}
+{ name='Keyword', value='and', line='3', column='0'}
+{ name='Open Parenthesis', value='(', line='3', column='4'}
+{ name='Property indentifiers', value='purchasedPizza', line='3', column='5'}
+{ name='Keyword', value='some', line='3', column='20'}
+{ name='Class identifier', value='Pizza', line='3', column='25'}
+{ name='Close Parenthesis', value=')', line='3', column='30'}
+{ name='Keyword', value='and', line='4', column='0'}
+{ name='Open Parenthesis', value='(', line='4', column='4'}
+{ name='Property indentifiers', value='hasPhone', line='4', column='5'}
+{ name='Keyword', value='some', line='4', column='14'}
+{ name='Data type', value='xsd:string', line='4', column='19'}
+{ name='Close Parenthesis', value=')', line='4', column='29'}
+{ name='Keyword', value='Individuals:', line='5', column='0'}
+{ name='Individual name', value='Customer1', line='6', column='0'}
+{ name='Comma', value=',', line='6', column='9'}
+{ name='Individual name', value='Customer10', line='7', column='0'}
+{ name='Comma', value=',', line='7', column='10'}
+{ name='Individual name', value='Customer2', line='8', column='0'}
+{ name='Comma', value=',', line='8', column='9'}
+{ name='Individual name', value='Customer3', line='9', column='0'}
+{ name='Comma', value=',', line='9', column='9'}
+{ name='Individual name', value='Customer4', line='10', column='0'}
+{ name='Comma', value=',', line='10', column='9'}
+{ name='Individual name', value='Customer5', line='11', column='0'}
+{ name='Comma', value=',', line='11', column='9'}
+{ name='Individual name', value='Customer6', line='12', column='0'}
+{ name='Comma', value=',', line='12', column='9'}
+{ name='Individual name', value='Customer7', line='13', column='0'}
+{ name='Comma', value=',', line='13', column='9'}
+{ name='Individual name', value='Customer8', line='14', column='0'}
+{ name='Comma', value=',', line='14', column='9'}
+{ name='Individual name', value='Customer9', line='15', column='0'}
+{ name='Keyword', value='Class:', line='16', column='0'}
+{ name='Class identifier', value='Employee', line='16', column='7'}
+{ name='Keyword', value='SubClassOf:', line='17', column='0'}
+{ name='Class identifier', value='Person', line='18', column='0'}
+{ name='Keyword', value='and', line='19', column='0'}
+{ name='Open Parenthesis', value='(', line='19', column='4'}
+{ name='Property indentifiers', value='ssn', line='19', column='5'}
+{ name='Keyword', value='min', line='19', column='9'}
+{ name='Cadinality', value='1', line='19', column='13'}
+{ name='Data type', value='xsd:string', line='19', column='15'}
+{ name='Close Parenthesis', value=')', line='19', column='25'}
+{ name='Keyword', value='Individuals:', line='20', column='0'}
+{ name='Individual name', value='Chef1', line='21', column='0'}
+{ name='Comma', value=',', line='21', column='5'}
+{ name='Individual name', value='Manager1', line='22', column='0'}
+{ name='Comma', value=',', line='22', column='8'}
+{ name='Individual name', value='Waiter1', line='23', column='0'}
+{ name='Comma', value=',', line='23', column='7'}
+{ name='Individual name', value='Waiter2', line='24', column='0'}
+{ name='Keyword', value='Class:', line='25', column='0'}
+{ name='Class identifier', value='Pizza', line='25', column='7'}
+{ name='Keyword', value='SubClassOf:', line='26', column='0'}
+{ name='Property indentifiers', value='hasBase', line='27', column='0'}
+{ name='Keyword', value='some', line='27', column='8'}
+{ name='Class identifier', value='PizzaBase', line='27', column='13'}
+{ name='Comma', value=',', line='27', column='22'}
+{ name='Property indentifiers', value='hasCaloricContent', line='28', column='0'}
+{ name='Keyword', value='some', line='28', column='18'}
+{ name='Data type', value='xsd:integer', line='28', column='23'}
+{ name='Keyword', value='DisjointClasses:', line='29', column='0'}
+{ name='Class identifier', value='Pizza', line='30', column='0'}
+{ name='Comma', value=',', line='30', column='5'}
+{ name='Class identifier', value='PizzaBase', line='30', column='7'}
+{ name='Comma', value=',', line='30', column='16'}
+{ name='Class identifier', value='PizzaTopping', line='30', column='18'}
+{ name='Keyword', value='Individuals:', line='31', column='0'}
+{ name='Individual name', value='CustomPizza1', line='32', column='0'}
+{ name='Comma', value=',', line='32', column='12'}
+{ name='Individual name', value='CustomPizza2', line='33', column='0'}
+{ name='Keyword', value='Class:', line='34', column='0'}
+{ name='Class identifier', value='CheesyPizza', line='34', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='35', column='0'}
+{ name='Class identifier', value='Pizza', line='36', column='0'}
+{ name='Keyword', value='and', line='37', column='0'}
+{ name='Open Parenthesis', value='(', line='37', column='4'}
+{ name='Property indentifiers', value='hasTopping', line='37', column='5'}
+{ name='Keyword', value='some', line='37', column='16'}
+{ name='Class identifier', value='CheeseTopping', line='37', column='21'}
+{ name='Close Parenthesis', value=')', line='37', column='34'}
+{ name='Keyword', value='Individuals:', line='38', column='0'}
+{ name='Individual name', value='CheesyPizza1', line='39', column='0'}
+{ name='Keyword', value='Class:', line='40', column='0'}
+{ name='Class identifier', value='HighCaloriePizza', line='40', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='41', column='0'}
+{ name='Class identifier', value='Pizza', line='42', column='0'}
+{ name='Keyword', value='and', line='43', column='0'}
+{ name='Open Parenthesis', value='(', line='43', column='4'}
+{ name='Property indentifiers', value='hasCaloricContent', line='43', column='5'}
+{ name='Keyword', value='some', line='43', column='23'}
+{ name='Data type', value='xsd:integer', line='43', column='28'}
+{ name='Open Bracket', value='[', line='43', column='39'}
+{ name='Equal greater than', value='>=', line='43', column='40'}
+{ name='Cadinality', value='400', line='43', column='43'}
+{ name='Close Bracket', value=']', line='43', column='46'}
+{ name='Close Parenthesis', value=')', line='43', column='47'}
+{ name='Keyword', value='Class:', line='44', column='0'}
+{ name='Class identifier', value='InterestingPizza', line='44', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='45', column='0'}
+{ name='Class identifier', value='Pizza', line='46', column='0'}
+{ name='Keyword', value='and', line='47', column='0'}
+{ name='Open Parenthesis', value='(', line='47', column='4'}
+{ name='Property indentifiers', value='hasTopping', line='47', column='5'}
+{ name='Keyword', value='min', line='47', column='16'}
+{ name='Cadinality', value='3', line='47', column='20'}
+{ name='Class identifier', value='PizzaTopping', line='47', column='22'}
+{ name='Close Parenthesis', value=')', line='47', column='34'}
+{ name='Keyword', value='Class:', line='48', column='0'}
+{ name='Class identifier', value='LowCaloriePizza', line='48', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='49', column='0'}
+{ name='Class identifier', value='Pizza', line='50', column='0'}
+{ name='Keyword', value='and', line='51', column='0'}
+{ name='Open Parenthesis', value='(', line='51', column='4'}
+{ name='Property indentifiers', value='hasCaloricContent', line='51', column='5'}
+{ name='Keyword', value='some', line='51', column='23'}
+{ name='Data type', value='xsd:integer', line='51', column='28'}
+{ name='Open Bracket', value='[', line='51', column='39'}
+{ name='Less Than', value='<', line='51', column='40'}
+{ name='Cadinality', value='400', line='51', column='42'}
+{ name='Close Bracket', value=']', line='51', column='45'}
+{ name='Close Parenthesis', value=')', line='51', column='46'}
+{ name='Keyword', value='Class:', line='52', column='0'}
+{ name='Class identifier', value='NamedPizza', line='52', column='7'}
+{ name='Keyword', value='SubClassOf:', line='53', column='0'}
+{ name='Class identifier', value='Pizza', line='54', column='0'}
+{ name='Keyword', value='Class:', line='55', column='0'}
+{ name='Class identifier', value='AmericanaHotPizza', line='55', column='7'}
+{ name='Keyword', value='SubClassOf:', line='56', column='0'}
+{ name='Class identifier', value='NamedPizza', line='57', column='0'}
+{ name='Comma', value=',', line='57', column='10'}
+{ name='Property indentifiers', value='hasTopping', line='58', column='0'}
+{ name='Keyword', value='some', line='58', column='11'}
+{ name='Class identifier', value='JalapenoPepperTopping', line='58', column='16'}
+{ name='Comma', value=',', line='58', column='37'}
+{ name='Property indentifiers', value='hasTopping', line='59', column='0'}
+{ name='Keyword', value='some', line='59', column='11'}
+{ name='Class identifier', value='MozzarellaTopping', line='59', column='16'}
+{ name='Comma', value=',', line='59', column='33'}
+{ name='Property indentifiers', value='hasTopping', line='60', column='0'}
+{ name='Keyword', value='some', line='60', column='11'}
+{ name='Class identifier', value='PepperoniTopping', line='60', column='16'}
+{ name='Comma', value=',', line='60', column='32'}
+{ name='Property indentifiers', value='hasTopping', line='61', column='0'}
+{ name='Keyword', value='some', line='61', column='11'}
+{ name='Class identifier', value='TomatoTopping', line='61', column='16'}
+{ name='Keyword', value='DisjointClasses:', line='62', column='0'}
+{ name='Class identifier', value='AmericanaHotPizza', line='63', column='0'}
+{ name='Comma', value=',', line='63', column='17'}
+{ name='Class identifier', value='AmericanaPizza', line='63', column='19'}
+{ name='Comma', value=',', line='63', column='33'}
+{ name='Class identifier', value='MargheritaPizza', line='63', column='35'}
+{ name='Comma', value=',', line='63', column='50'}
+{ name='Class identifier', value='SohoPizza', line='63', column='52'}
+{ name='Keyword', value='Individuals:', line='64', column='0'}
+{ name='Individual name', value='AmericanaHotPizza1', line='65', column='0'}
+{ name='Comma', value=',', line='65', column='18'}
+{ name='Individual name', value='AmericanaHotPizza2', line='66', column='0'}
+{ name='Comma', value=',', line='66', column='18'}
+{ name='Individual name', value='AmericanaHotPizza3', line='67', column='0'}
+{ name='Comma', value=',', line='67', column='18'}
+{ name='Individual name', value='ChicagoAmericanaHotPizza1', line='68', column='0'}
+{ name='Keyword', value='Class:', line='69', column='0'}
+{ name='Class identifier', value='AmericanaPizza', line='69', column='7'}
+{ name='Keyword', value='SubClassOf:', line='70', column='0'}
+{ name='Class identifier', value='NamedPizza', line='71', column='0'}
+{ name='Comma', value=',', line='71', column='10'}
+{ name='Property indentifiers', value='hasTopping', line='72', column='0'}
+{ name='Keyword', value='some', line='72', column='11'}
+{ name='Class identifier', value='MozzarellaTopping', line='72', column='16'}
+{ name='Comma', value=',', line='72', column='33'}
+{ name='Property indentifiers', value='hasTopping', line='73', column='0'}
+{ name='Keyword', value='some', line='73', column='11'}
+{ name='Class identifier', value='PepperoniTopping', line='73', column='16'}
+{ name='Comma', value=',', line='73', column='32'}
+{ name='Property indentifiers', value='hasTopping', line='74', column='0'}
+{ name='Keyword', value='some', line='74', column='11'}
+{ name='Class identifier', value='TomatoTopping', line='74', column='16'}
+{ name='Keyword', value='DisjointClasses:', line='75', column='0'}
+{ name='Class identifier', value='AmericanaHotPizza', line='76', column='0'}
+{ name='Comma', value=',', line='76', column='17'}
+{ name='Class identifier', value='AmericanaPizza', line='76', column='19'}
+{ name='Comma', value=',', line='76', column='33'}
+{ name='Class identifier', value='MargheritaPizza', line='76', column='35'}
+{ name='Comma', value=',', line='76', column='50'}
+{ name='Class identifier', value='SohoPizza', line='76', column='52'}
+{ name='Keyword', value='Individuals:', line='77', column='0'}
+{ name='Individual name', value='AmericanaPizza1', line='78', column='0'}
+{ name='Comma', value=',', line='78', column='15'}
+{ name='Individual name', value='AmericanaPizza2', line='79', column='0'}
+{ name='Keyword', value='Class:', line='80', column='0'}
+{ name='Class identifier', value='MargheritaPizza', line='80', column='7'}
+{ name='Keyword', value='SubClassOf:', line='81', column='0'}
+{ name='Class identifier', value='NamedPizza', line='82', column='0'}
+{ name='Comma', value=',', line='82', column='10'}
+{ name='Property indentifiers', value='hasTopping', line='83', column='0'}
+{ name='Keyword', value='some', line='83', column='11'}
+{ name='Class identifier', value='MozzarellaTopping', line='83', column='16'}
+{ name='Comma', value=',', line='83', column='33'}
+{ name='Property indentifiers', value='hasTopping', line='84', column='0'}
+{ name='Keyword', value='some', line='84', column='11'}
+{ name='Class identifier', value='TomatoTopping', line='84', column='16'}
+{ name='Comma', value=',', line='84', column='29'}
+{ name='Property indentifiers', value='hasTopping', line='85', column='0'}
+{ name='Property indentifiers', value='only', line='85', column='11'}
+{ name='Open Parenthesis', value='(', line='86', column='0'}
+{ name='Class identifier', value='MozzarellaTopping', line='86', column='1'}
+{ name='Keyword', value='or', line='86', column='19'}
+{ name='Class identifier', value='TomatoTopping', line='86', column='22'}
+{ name='Close Parenthesis', value=')', line='86', column='35'}
+{ name='Keyword', value='DisjointClasses:', line='87', column='0'}
+{ name='Class identifier', value='AmericanaHotPizza', line='88', column='0'}
+{ name='Comma', value=',', line='88', column='17'}
+{ name='Class identifier', value='AmericanaPizza', line='88', column='19'}
+{ name='Comma', value=',', line='88', column='33'}
+{ name='Class identifier', value='MargheritaPizza', line='88', column='35'}
+{ name='Comma', value=',', line='88', column='50'}
+{ name='Class identifier', value='SohoPizza', line='88', column='52'}
+{ name='Keyword', value='Individuals:', line='89', column='0'}
+{ name='Individual name', value='MargheritaPizza1', line='90', column='0'}
+{ name='Comma', value=',', line='90', column='16'}
+{ name='Individual name', value='MargheritaPizza2', line='91', column='0'}
+{ name='Keyword', value='Class:', line='92', column='0'}
+{ name='Class identifier', value='SohoPizza', line='92', column='7'}
+{ name='Keyword', value='SubClassOf:', line='93', column='0'}
+{ name='Class identifier', value='NamedPizza', line='94', column='0'}
+{ name='Comma', value=',', line='94', column='10'}
+{ name='Property indentifiers', value='hasTopping', line='95', column='0'}
+{ name='Keyword', value='some', line='95', column='11'}
+{ name='Class identifier', value='MozzarellaTopping', line='95', column='16'}
+{ name='Comma', value=',', line='95', column='33'}
+{ name='Property indentifiers', value='hasTopping', line='96', column='0'}
+{ name='Keyword', value='some', line='96', column='11'}
+{ name='Class identifier', value='OliveTopping', line='96', column='16'}
+{ name='Comma', value=',', line='96', column='28'}
+{ name='Property indentifiers', value='hasTopping', line='97', column='0'}
+{ name='Keyword', value='some', line='97', column='11'}
+{ name='Class identifier', value='ParmesanTopping', line='97', column='16'}
+{ name='Comma', value=',', line='97', column='31'}
+{ name='Property indentifiers', value='hasTopping', line='98', column='0'}
+{ name='Keyword', value='some', line='98', column='11'}
+{ name='Class identifier', value='TomatoTopping', line='98', column='16'}
+{ name='Comma', value=',', line='98', column='29'}
+{ name='Property indentifiers', value='hasTopping', line='99', column='0'}
+{ name='Property indentifiers', value='only', line='99', column='11'}
+{ name='Open Parenthesis', value='(', line='100', column='0'}
+{ name='Class identifier', value='MozzarellaTopping', line='100', column='1'}
+{ name='Keyword', value='or', line='100', column='19'}
+{ name='Class identifier', value='OliveTopping', line='100', column='22'}
+{ name='Keyword', value='or', line='100', column='35'}
+{ name='Class identifier', value='ParmesanTopping', line='100', column='38'}
+{ name='Keyword', value='or', line='100', column='54'}
+{ name='Class identifier', value='TomatoTopping', line='100', column='57'}
+{ name='Close Parenthesis', value=')', line='100', column='70'}
+{ name='Keyword', value='DisjointClasses:', line='101', column='0'}
+{ name='Class identifier', value='AmericanaHotPizza', line='102', column='0'}
+{ name='Comma', value=',', line='102', column='17'}
+{ name='Class identifier', value='AmericanaPizza', line='102', column='19'}
+{ name='Comma', value=',', line='102', column='33'}
+{ name='Class identifier', value='MargheritaPizza', line='102', column='35'}
+{ name='Comma', value=',', line='102', column='50'}
+{ name='Class identifier', value='SohoPizza', line='102', column='52'}
+{ name='Keyword', value='Individuals:', line='103', column='0'}
+{ name='Individual name', value='SohoPizza1', line='104', column='0'}
+{ name='Comma', value=',', line='104', column='10'}
+{ name='Individual name', value='SohoPizza2', line='105', column='0'}
+{ name='Keyword', value='Class:', line='106', column='0'}
+{ name='Class identifier', value='SpicyPizza', line='106', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='107', column='0'}
+{ name='Class identifier', value='Pizza', line='108', column='0'}
+{ name='Keyword', value='and', line='109', column='0'}
+{ name='Open Parenthesis', value='(', line='109', column='4'}
+{ name='Property indentifiers', value='hasTopping', line='109', column='5'}
+{ name='Keyword', value='some', line='109', column='16'}
+{ name='Open Parenthesis', value='(', line='109', column='21'}
+{ name='Property indentifiers', value='hasSpiciness', line='109', column='22'}
+{ name='Keyword', value='value', line='109', column='35'}
+{ name='Class identifier', value='Hot', line='109', column='41'}
+{ name='Close Parenthesis', value=')', line='109', column='44'}
+{ name='Close Parenthesis', value=')', line='109', column='45'}
+{ name='Keyword', value='Class:', line='110', column='0'}
+{ name='Class identifier', value='VegetarianPizza', line='110', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='111', column='0'}
+{ name='Class identifier', value='Pizza', line='112', column='0'}
+{ name='Keyword', value='and', line='113', column='0'}
+{ name='Open Parenthesis', value='(', line='113', column='4'}
+{ name='Property indentifiers', value='hasTopping', line='113', column='5'}
+{ name='Property indentifiers', value='only', line='113', column='16'}
+{ name='Open Parenthesis', value='(', line='114', column='0'}
+{ name='Class identifier', value='CheeseTopping', line='114', column='1'}
+{ name='Keyword', value='or', line='114', column='15'}
+{ name='Class identifier', value='VegetableTopping', line='114', column='18'}
+{ name='Close Parenthesis', value=')', line='114', column='34'}
+{ name='Close Parenthesis', value=')', line='114', column='35'}
+{ name='Keyword', value='Class:', line='115', column='0'}
+{ name='Class identifier', value='PizzaBase', line='115', column='7'}
+{ name='Keyword', value='DisjointClasses:', line='116', column='0'}
+{ name='Class identifier', value='Pizza', line='117', column='0'}
+{ name='Comma', value=',', line='117', column='5'}
+{ name='Class identifier', value='PizzaBase', line='117', column='7'}
+{ name='Comma', value=',', line='117', column='16'}
+{ name='Class identifier', value='PizzaTopping', line='117', column='18'}
+{ name='Keyword', value='Class:', line='118', column='0'}
+{ name='Class identifier', value='PizzaTopping', line='118', column='7'}
+{ name='Keyword', value='DisjointClasses:', line='119', column='0'}
+{ name='Class identifier', value='Pizza', line='120', column='0'}
+{ name='Comma', value=',', line='120', column='5'}
+{ name='Class identifier', value='PizzaBase', line='120', column='7'}
+{ name='Comma', value=',', line='120', column='16'}
+{ name='Class identifier', value='PizzaTopping', line='120', column='18'}
+{ name='Keyword', value='Class:', line='121', column='0'}
+{ name='Class identifier', value='Spiciness', line='121', column='7'}
+{ name='Keyword', value='EquivalentTo:', line='122', column='0'}
+{ name='Open Brace', value='{', line='123', column='0'}
+{ name='Class identifier', value='Hot', line='123', column='1'}
+{ name='Comma', value=',', line='123', column='5'}
+{ name='Class identifier', value='Medium', line='123', column='7'}
+{ name='Comma', value=',', line='123', column='14'}
+{ name='Class identifier', value='Mild', line='123', column='16'}
+{ name='Close Brace', value='}', line='123', column='20'}
