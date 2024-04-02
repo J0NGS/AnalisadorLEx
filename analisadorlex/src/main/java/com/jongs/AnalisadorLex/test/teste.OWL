@@ -1,7 +1,7 @@
 Class: Customer
 EquivalentTo:
 Person
-and (purchasedPizza some Pizza)
+and (PurchasedPizza some Pizza)
 and (hasPhone some xsd:string)
 Individuals:
 Customer1,
@@ -53,7 +53,7 @@ and (hasCaloricContent some xsd:integer[< 400])
 Class: NamedPizza
 SubClassOf:
 Pizza
-Class: AmericanaHotPizza
+Class: AmericanaHotPizza    
 SubClassOf:
 NamedPizza,
 hasTopping some JalapenoPepperTopping,

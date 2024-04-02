@@ -1,0 +1,74 @@
+import java_cup.runtime.*;
+
+parser code {:
+
+    public void report_error(String message, Object info) {
+        System.err.println("Error: " + message);
+    }
+
+    public void report_fatal_error(String message, Object info) {
+        report_error(message, info);
+        throw new RuntimeException("Fatal error occurred.");
+    }
+:};
+
+/* Terminals */
+terminal SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON, DISJOINT_CLASSES_COLON, 
+        CLASS_IDENTIFIERS, INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS_HAS, PROPERTY_IDENTIFIERS_IS, DATA_TYPE, CARDINALITY, COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, 
+        RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN, EQUAL_GREATER_THAN, COMMA, DOUBLE_QUOTE, BROKEN_LINE, WHITESPACE, ONLY;
+
+/* Non-terminals */
+non terminal Object Classes, ClassDefinition, ClassDescription, DescriptionPrimitive, DescriptionDefined, Properties, AgroupProperties, Property, Connect, PropertyPair, 
+        DisjointClassesDescription, DisjointClassesList, ClassesIdentifiersAgroup, IndividualsDescription, IndividualsList, IndividualsAgroup, Error;
+
+/* Start symbol */
+start with Classes;
+
+/* Productions */
+Classes ::= ClassDefinition | Classes ClassDefinition;
+
+ClassDefinition ::= CLASS_COLON CLASS_IDENTIFIERS ClassDescription;
+
+ClassDescription ::= DescriptionPrimitive DisjointClassesDescription IndividualsDescription
+                   | DescriptionDefined DisjointClassesDescription IndividualsDescription;
+
+DescriptionPrimitive ::= SUBCLASS_OF_COLON Properties;
+
+DescriptionDefined ::= EQUIVALENT_TO_COLON Properties;
+
+Properties ::= Property AgroupProperties;
+
+AgroupProperties ::= COMMA Properties
+                  | /* e */;
+
+Property ::= CLASS_IDENTIFIERS Connect PropertyPair
+            | PROPERTY_IDENTIFIERS_HAS Connect PropertyPair
+            | PROPERTY_IDENTIFIERS_IS Connect PropertyPair;
+
+Connect ::= SOME
+         | OR
+         | AND
+         | ALL
+         | NOT
+         | EXACTLY
+         | VALUE
+         | THAT;
+
+PropertyPair ::= CLASS_IDENTIFIERS
+              | DATA_TYPE;
+
+DisjointClassesDescription ::= DISJOINT_CLASSES_COLON DisjointClassesList
+                            | /* e */;
+
+DisjointClassesList ::= CLASS_IDENTIFIERS ClassesIdentifiersAgroup;
+
+ClassesIdentifiersAgroup ::= COMMA DisjointClassesList
+                          | /* e */;
+
+IndividualsDescription ::= INDIVIDUALS_COLON IndividualsList
+                         | /* e */;
+
+IndividualsList ::= INDIVIDUAL_NAME IndividualsAgroup;
+
+IndividualsAgroup ::= COMMA IndividualsList
+                   | /* e */;
