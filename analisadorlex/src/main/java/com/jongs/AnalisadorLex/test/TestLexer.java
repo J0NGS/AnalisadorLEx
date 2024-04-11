@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.jongs.AnalisadorLex.Lex.Lexer;
+import com.jongs.AnalisadorLex.Lex.sym;
+
+import java_cup.runtime.Symbol;
 
 public class TestLexer {
     public static void main(String[] args) throws IOException {
@@ -29,17 +32,24 @@ public class TestLexer {
 
         // Mapa para contar a quantidade de cada tipo de token
         Map<String, Integer> tokenCountMap = new HashMap<>();
-
+        Symbol symbol;
+        int eof = 0;
         // Loop para processar todos os tokens
-        while ((token = (String)lexical.next_token().value) != null && !(lexical.next_token().value.equals("EOF"))) {
+        while ((symbol = lexical.next_token()) != null  && eof == 0) {
             // Adiciona o token à lista
+            token = symbol.value.toString();
             tokenList.add(token);
 
             // Atualiza o contador de tokens
             tokenCountMap.put(token, tokenCountMap.getOrDefault(token, 0) + 1);
 
             // Exibe o token na linha de comando
-            System.out.println(token.toString());
+            System.out.println("token->" + token.toString());
+            System.out.println("tipo do token->" + sym.terminalNames[symbol.sym]);
+            System.out.println("--------------------------------------");
+            if (token.equals("EOF")) {
+                eof = 1;
+            }
         }
 
         // Gera o arquivo de saída com todos os tokens

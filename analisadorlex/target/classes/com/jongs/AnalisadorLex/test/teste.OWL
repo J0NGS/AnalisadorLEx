@@ -41,7 +41,7 @@ CheesyPizza1
 Class: HighCaloriePizza
 EquivalentTo:
 Pizza
-and (hasCaloricContent some xsd:integer[>= 400])
+and (hasCaloricContent some xsd:integer[>=400])
 Class: InterestingPizza
 EquivalentTo:
 Pizza
@@ -49,11 +49,11 @@ and (hasTopping min 3 PizzaTopping)
 Class: LowCaloriePizza
 EquivalentTo:
 Pizza
-and (hasCaloricContent some xsd:integer[< 400])
+and (hasCaloricContent some xsd:integer[<400])
 Class: NamedPizza
 SubClassOf:
 Pizza
-Class: AmericanaHotPizza    
+Class: AmericanaHotPizza
 SubClassOf:
 NamedPizza,
 hasTopping some JalapenoPepperTopping,
@@ -107,7 +107,7 @@ SohoPizza2
 Class: SpicyPizza
 EquivalentTo:
 Pizza
-and (hasTopping some (hasSpiciness value Hot))
+and (hasTopping some(hasSpiciness value Hot))
 Class: VegetarianPizza
 EquivalentTo:
 Pizza
@@ -121,4 +121,4 @@ DisjointClasses:
 Pizza, PizzaBase, PizzaTopping
 Class: Spiciness
 EquivalentTo:
-{Hot , Medium , Mild}
+{Hot, Medium,Mild}

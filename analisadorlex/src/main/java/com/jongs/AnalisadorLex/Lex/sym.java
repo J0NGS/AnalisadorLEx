@@ -29,6 +29,7 @@ public class sym {
   public static final int BROKEN_LINE = 37;
   public static final int EQUIVALENT_TO_COLON = 13;
   public static final int MIN = 5;
+  public static final int SSN = 40;
   public static final int EOF = 0;
   public static final int DOUBLE_QUOTE = 36;
   public static final int EQUAL = 32;
@@ -88,7 +89,8 @@ public class sym {
   "DOUBLE_QUOTE",
   "BROKEN_LINE",
   "WHITESPACE",
-  "ONLY"
+  "ONLY",
+  "SSN"
   };
 }
 

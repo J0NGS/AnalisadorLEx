@@ -32,6 +32,7 @@ THAT = "that"
 NOT = "not"
 AND = "and"
 OR = "or"
+ONLY = "only"
 CLASS_COLON = "Class:"
 EQUIVALENT_TO_COLON = "EquivalentTo:"
 INDIVIDUALS_COLON = "Individuals:"
@@ -59,9 +60,12 @@ EQUAL_LESS_THAN = "<="
 EQUAL_GREATER_THAN = ">="
 DOUBLE_QUOTE = "\""
 BROKEN_LINE = [\r\n\f]+
-WHITESPACE = {BROKEN_LINE} | [ \t\f]
+WHITESPACE = [ \t\r\f]*|{BROKEN_LINE}
 COMMA = ("," | "," {WHITESPACE})
+SSN = "ssn"
+
 %%
+{SSN} { return symbol(sym.SSN, yytext()); }
 {SOME} { return symbol(sym.SOME, yytext()); }
 {ALL} { return symbol(sym.ALL, yytext()); }
 {VALUE} { return symbol(sym.VALUE, yytext()); }
@@ -72,6 +76,7 @@ COMMA = ("," | "," {WHITESPACE})
 {NOT} { return symbol (sym.NOT, yytext()); }
 {AND} { return symbol (sym.AND, yytext()); }
 {OR} { return symbol (sym.OR, yytext()); }
+{ONLY} { return symbol (sym.ONLY, yytext()); }
 {CLASS_COLON} { return symbol (sym.CLASS_COLON, yytext()); }
 {EQUIVALENT_TO_COLON} { return symbol (sym.EQUIVALENT_TO_COLON, yytext()); }
 {INDIVIDUALS_COLON} { return symbol (sym.INDIVIDUALS_COLON, yytext()); }
