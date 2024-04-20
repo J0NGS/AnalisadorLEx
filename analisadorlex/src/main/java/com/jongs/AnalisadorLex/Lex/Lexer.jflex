@@ -60,7 +60,7 @@ EQUAL_LESS_THAN = "<="
 EQUAL_GREATER_THAN = ">="
 DOUBLE_QUOTE = "\""
 BROKEN_LINE = [\r\n\f]+
-WHITESPACE = [ \t\r\f]*|{BROKEN_LINE}
+WHITESPACE = [ \t\r\f]*
 COMMA = ("," | "," {WHITESPACE})
 SSN = "ssn"
 
@@ -103,7 +103,7 @@ SSN = "ssn"
 {COMMA} {return symbol (sym.COMMA, yytext()); }
 {DOUBLE_QUOTE} { return symbol (sym.DOUBLE_QUOTE, yytext()); }
 {BROKEN_LINE} { return symbol (sym.BROKEN_LINE, yytext()); }
-{WHITESPACE} {return symbol (sym.WHITESPACE, yytext()); }
+{WHITESPACE} {/**/}
 
 . { throw new Error("Caractere inválido <"+ yytext()+">\n na linha <"+ yyline + ">\n coluna < "+ yycolumn + ">"); }
 
