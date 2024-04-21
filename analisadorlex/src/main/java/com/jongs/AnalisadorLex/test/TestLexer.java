@@ -41,10 +41,10 @@ public class TestLexer {
             tokenList.add(token);
 
             // Atualiza o contador de tokens
-            tokenCountMap.put(token, tokenCountMap.getOrDefault(token, 0) + 1);
+            tokenCountMap.put(sym.terminalNames[symbol.sym], tokenCountMap.getOrDefault(sym.terminalNames[symbol.sym], 0) + 1);
 
             // Exibe o token na linha de comando
-            System.out.println("token->" + token.toString());
+            System.out.println("token->" + token);
             System.out.println("tipo do token->" + sym.terminalNames[symbol.sym]);
             System.out.println("--------------------------------------");
             if (token.equals("EOF")) {
@@ -58,7 +58,7 @@ public class TestLexer {
         // Exibe o resumo final dos tokens
         System.out.println("\nResumo Final:");
         for (Map.Entry<String, Integer> entry : tokenCountMap.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue() + " ocorrência(s)");
+            System.out.println("Token-> " + entry.getKey() + " | Ocorrências-> " + entry.getValue());
         }
     }
 

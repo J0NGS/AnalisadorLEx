@@ -6,7 +6,6 @@ package com.jongs.AnalisadorLex.Lex;
 //----------------------------------------------------
 
 import java_cup.runtime.*;
-import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
   */
@@ -31,17 +30,16 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\042\000\002\002\004\000\002\002\003\000\002\002" +
-    "\004\000\002\003\005\000\002\004\005\000\002\004\005" +
-    "\000\002\005\004\000\002\006\004\000\002\007\004\000" +
-    "\002\010\004\000\002\010\002\000\002\011\005\000\002" +
-    "\011\005\000\002\011\005\000\002\012\003\000\002\012" +
-    "\003\000\002\012\003\000\002\012\003\000\002\012\003" +
-    "\000\002\012\003\000\002\012\003\000\002\012\003\000" +
-    "\002\013\003\000\002\013\003\000\002\014\004\000\002" +
-    "\014\002\000\002\015\004\000\002\016\004\000\002\016" +
-    "\002\000\002\017\004\000\002\017\002\000\002\020\004" +
-    "\000\002\021\004\000\002\021\002" });
+    "\000\036\000\002\002\004\000\002\002\003\000\002\002" +
+    "\003\000\002\003\005\000\002\004\004\000\002\005\005" +
+    "\000\002\005\002\000\002\006\004\000\002\007\004\000" +
+    "\002\010\005\000\002\010\002\000\002\011\004\000\002" +
+    "\011\002\000\002\012\004\000\002\013\004\000\002\014" +
+    "\006\000\002\014\002\000\002\015\005\000\002\016\004" +
+    "\000\002\017\004\000\002\020\006\000\002\020\003\000" +
+    "\002\021\005\000\002\021\003\000\002\022\003\000\002" +
+    "\022\003\000\002\022\003\000\002\023\003\000\002\024" +
+    "\003\000\002\024\003" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -49,47 +47,35 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\065\000\004\016\005\001\002\000\006\002\067\016" +
-    "\005\001\002\000\004\023\007\001\002\000\006\002\000" +
-    "\016\000\001\002\000\006\017\014\021\012\001\002\000" +
-    "\012\002\uffe8\016\uffe8\020\uffe8\022\046\001\002\000\012" +
-    "\002\uffe8\016\uffe8\020\uffe8\022\046\001\002\000\010\023" +
-    "\017\025\021\026\016\001\002\000\006\002\ufffe\016\ufffe" +
-    "\001\002\000\010\023\017\025\021\026\016\001\002\000" +
-    "\012\002\ufffa\016\ufffa\020\ufffa\022\ufffa\001\002\000\022" +
-    "\004\030\005\024\006\026\011\023\012\025\013\031\014" +
-    "\022\015\032\001\002\000\022\004\030\005\024\006\026" +
-    "\011\023\012\025\013\031\014\022\015\032\001\002\000" +
-    "\014\002\ufff7\016\ufff7\020\ufff7\022\ufff7\045\036\001\002" +
-    "\000\022\004\030\005\024\006\026\011\023\012\025\013" +
-    "\031\014\022\015\032\001\002\000\006\023\ufff1\027\ufff1" +
-    "\001\002\000\006\023\uffee\027\uffee\001\002\000\006\023" +
-    "\ufff0\027\ufff0\001\002\000\006\023\uffec\027\uffec\001\002" +
-    "\000\006\023\uffed\027\uffed\001\002\000\006\023\034\027" +
-    "\033\001\002\000\006\023\ufff3\027\ufff3\001\002\000\006" +
-    "\023\uffef\027\uffef\001\002\000\006\023\ufff2\027\ufff2\001" +
-    "\002\000\014\002\uffea\016\uffea\020\uffea\022\uffea\045\uffea" +
-    "\001\002\000\014\002\uffeb\016\uffeb\020\uffeb\022\uffeb\045" +
-    "\uffeb\001\002\000\014\002\ufff5\016\ufff5\020\ufff5\022\ufff5" +
-    "\045\ufff5\001\002\000\010\023\017\025\021\026\016\001" +
-    "\002\000\012\002\ufff9\016\ufff9\020\ufff9\022\ufff9\001\002" +
-    "\000\012\002\ufff8\016\ufff8\020\ufff8\022\ufff8\001\002\000" +
-    "\006\023\034\027\033\001\002\000\014\002\ufff6\016\ufff6" +
-    "\020\ufff6\022\ufff6\045\ufff6\001\002\000\006\023\034\027" +
-    "\033\001\002\000\014\002\ufff4\016\ufff4\020\ufff4\022\ufff4" +
-    "\045\ufff4\001\002\000\012\002\ufffb\016\ufffb\020\ufffb\022" +
-    "\ufffb\001\002\000\004\023\060\001\002\000\010\002\uffe3" +
-    "\016\uffe3\020\050\001\002\000\004\024\052\001\002\000" +
-    "\006\002\ufffd\016\ufffd\001\002\000\010\002\uffe0\016\uffe0" +
-    "\045\054\001\002\000\006\002\uffe4\016\uffe4\001\002\000" +
-    "\004\024\052\001\002\000\006\002\uffe2\016\uffe2\001\002" +
-    "\000\006\002\uffe1\016\uffe1\001\002\000\010\002\uffe9\016" +
-    "\uffe9\020\uffe9\001\002\000\012\002\uffe5\016\uffe5\020\uffe5" +
-    "\045\061\001\002\000\004\023\060\001\002\000\010\002" +
-    "\uffe7\016\uffe7\020\uffe7\001\002\000\010\002\uffe6\016\uffe6" +
-    "\020\uffe6\001\002\000\010\002\uffe3\016\uffe3\020\050\001" +
-    "\002\000\006\002\ufffc\016\ufffc\001\002\000\006\002\uffff" +
-    "\016\uffff\001\002\000\004\002\001\001\002" });
+    "\000\062\000\006\003\006\017\007\001\002\000\004\002" +
+    "\000\001\002\000\004\002\064\001\002\000\004\002\uffff" +
+    "\001\002\000\004\024\062\001\002\000\004\022\013\001" +
+    "\002\000\010\002\ufffb\021\ufffb\023\034\001\002\000\010" +
+    "\024\017\026\022\027\016\001\002\000\004\047\014\001" +
+    "\002\000\010\024\uffee\026\uffee\027\uffee\001\002\000\012" +
+    "\002\uffec\021\uffec\023\uffec\050\030\001\002\000\004\004" +
+    "\uffe8\001\002\000\014\002\uffea\004\uffe7\021\uffea\023\uffea" +
+    "\050\uffea\001\002\000\004\004\024\001\002\000\010\002" +
+    "\uffef\021\uffef\023\uffef\001\002\000\004\004\uffe9\001\002" +
+    "\000\006\024\027\030\025\001\002\000\006\024\uffe6\030" +
+    "\uffe6\001\002\000\012\002\uffe4\021\uffe4\023\uffe4\050\uffe4" +
+    "\001\002\000\012\002\uffeb\021\uffeb\023\uffeb\050\uffeb\001" +
+    "\002\000\012\002\uffe5\021\uffe5\023\uffe5\050\uffe5\001\002" +
+    "\000\004\047\031\001\002\000\010\024\017\026\022\027" +
+    "\016\001\002\000\010\002\uffed\021\uffed\023\uffed\001\002" +
+    "\000\004\002\ufff0\001\002\000\004\047\061\001\002\000" +
+    "\004\024\053\001\002\000\006\002\ufff5\021\037\001\002" +
+    "\000\004\047\051\001\002\000\004\025\043\001\002\000" +
+    "\004\002\ufffd\001\002\000\004\002\ufff6\001\002\000\006" +
+    "\002\ufff1\050\044\001\002\000\004\047\046\001\002\000" +
+    "\004\002\ufff3\001\002\000\004\025\047\001\002\000\006" +
+    "\002\ufff1\050\044\001\002\000\004\002\ufff2\001\002\000" +
+    "\004\025\ufff4\001\002\000\004\047\060\001\002\000\006" +
+    "\047\ufff7\050\054\001\002\000\004\052\056\001\002\000" +
+    "\004\047\ufff9\001\002\000\006\047\ufff7\050\054\001\002" +
+    "\000\004\047\ufff8\001\002\000\006\002\ufffc\021\ufffc\001" +
+    "\002\000\004\024\ufffa\001\002\000\004\047\063\001\002" +
+    "\000\004\022\ufffe\001\002\000\004\002\001\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -97,27 +83,26 @@ public class parser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\065\000\006\002\003\003\005\001\001\000\004\003" +
-    "\065\001\001\000\002\001\001\000\002\001\001\000\010" +
-    "\004\012\005\010\006\007\001\001\000\004\014\063\001" +
-    "\001\000\004\014\046\001\001\000\006\007\044\011\017" +
-    "\001\001\000\002\001\001\000\006\007\014\011\017\001" +
-    "\001\000\002\001\001\000\004\012\042\001\001\000\004" +
-    "\012\040\001\001\000\004\010\036\001\001\000\004\012" +
-    "\026\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\013" +
-    "\034\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\006\007\037\011\017\001\001\000\002\001\001" +
-    "\000\002\001\001\000\004\013\041\001\001\000\002\001" +
-    "\001\000\004\013\043\001\001\000\002\001\001\000\002" +
-    "\001\001\000\004\015\056\001\001\000\004\017\050\001" +
-    "\001\000\004\020\052\001\001\000\002\001\001\000\004" +
-    "\021\054\001\001\000\002\001\001\000\004\020\055\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\016\061\001\001\000\004\015\062\001\001\000" +
-    "\002\001\001\000\002\001\001\000\004\017\064\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001" });
+    "\000\062\000\010\002\004\003\007\015\003\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\006\016\010\017\011\001\001\000\010\004" +
+    "\032\005\035\006\034\001\001\000\010\020\020\021\014" +
+    "\022\017\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\023\022\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\024\025\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\010\020\031\021\014\022\017\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\007\051\001" +
+    "\001\000\006\011\040\012\037\001\001\000\002\001\001" +
+    "\000\004\013\041\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\014\044\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\004\014\047\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\010\054\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\010\056\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -157,13 +142,46 @@ public class parser extends java_cup.runtime.lr_parser {
 
 
 
-    public void report_error(String message, Object info) {
-        System.err.println("Error: " + message);
+    public void report_error(String message, Object info)  {
+        // Obtém o número da linha onde ocorreu o erro
+        int line = ((Symbol) info).left;
+        // Obtém o token que causou o erro
+        Symbol tokenSymbol = (Symbol) info;
+        String token = tokenSymbol.value.toString();
+        
+        // Obtém o token anterior
+        String previousTokenSymbol = sym.terminalNames[tokenSymbol.left];;
+        String previousToken = (previousTokenSymbol != null) ? previousTokenSymbol : "N/A";
+        
+        // Obtém o token posterior
+        String nextTokenSymbol = sym.terminalNames[tokenSymbol.right];
+        String nextToken = (nextTokenSymbol != null) ? nextTokenSymbol : "N/A";
+        
+        // Especifica o tipo de erro e o contexto
+        String errorMessage = "Syntax Error at line " + line + " - Token: " + token + " - Previous Token: " + previousToken + " - Next Token: " + nextToken + " - " + message;
+        System.out.println(errorMessage);
     }
 
-    public void report_fatal_error(String message, Object info) {
-        report_error(message, info);
-        throw new RuntimeException("Fatal error occurred.");
+    public void report_fatal_error(String message, Object info)  {
+        // Obtém o número da linha onde ocorreu o erro
+        int line = ((Symbol) info).left;
+        // Obtém o token que causou o erro
+        Symbol tokenSymbol = (Symbol) info;
+        String token = tokenSymbol.value.toString();
+        
+        
+        // Obtém o token anterior
+        String previousTokenSymbol = sym.terminalNames[tokenSymbol.left];
+        String previousToken = (previousTokenSymbol != null) ? previousTokenSymbol : "N/A";
+        
+        // Obtém o token posterior
+        String nextTokenSymbol = sym.terminalNames[tokenSymbol.right];;
+        String nextToken = (nextTokenSymbol != null) ? nextTokenSymbol : "N/A";
+        
+        // Especifica o tipo de erro e o contexto
+        String errorMessage = "Fatal Syntax Error at line " + line + " - Token: " + token + " - Previous Token: " + previousToken + " - Next Token: " + nextToken + " - " + message;
+        System.out.println(errorMessage);
+        System.exit(-1);
     }
 
 
@@ -192,7 +210,7 @@ class CUP$parser$actions {
       switch (CUP$parser$act_num)
         {
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 0: // $START ::= Classes EOF 
+          case 0: // $START ::= Class EOF 
             {
               Object RESULT =null;
 		int start_valleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
@@ -206,299 +224,263 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 1: // Classes ::= ClassDefinition 
+          case 1: // Class ::= PrimitiveClass 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Classes",0, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("Class",0, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // Classes ::= Classes ClassDefinition 
+          case 2: // Class ::= error 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Classes",0, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("Class",0, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // ClassDefinition ::= CLASS_COLON CLASS_IDENTIFIERS ClassDescription 
+          case 3: // ClassHeader ::= CLASS_COLON CLASS_IDENTIFIERS BROKEN_LINE 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("ClassDefinition",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("ClassHeader",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // ClassDescription ::= DescriptionPrimitive DisjointClassesDescription IndividualsDescription 
+          case 4: // DisjointAndIndividuals ::= DisjointClasses Individuals 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("ClassDescription",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointAndIndividuals",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // ClassDescription ::= DescriptionDefined DisjointClassesDescription IndividualsDescription 
+          case 5: // DisjointClasses ::= DisjointClassesHead DisjointClassesBody BROKEN_LINE 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("ClassDescription",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClasses",3, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // DescriptionPrimitive ::= SUBCLASS_OF_COLON Properties 
+          case 6: // DisjointClasses ::= 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("DescriptionPrimitive",3, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClasses",3, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // DescriptionDefined ::= EQUIVALENT_TO_COLON Properties 
+          case 7: // DisjointClassesHead ::= DISJOINT_CLASSES_COLON BROKEN_LINE 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("DescriptionDefined",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClassesHead",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // Properties ::= Property AgroupProperties 
+          case 8: // DisjointClassesBody ::= CLASS_IDENTIFIERS DisjointClassesBodyComma 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Properties",5, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClassesBody",5, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // AgroupProperties ::= COMMA Properties 
+          case 9: // DisjointClassesBodyComma ::= COMMA CLASS_IDENTIFERS DisjointClassesBodyComma 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("AgroupProperties",6, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClassesBodyComma",6, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // AgroupProperties ::= 
+          case 10: // DisjointClassesBodyComma ::= 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("AgroupProperties",6, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClassesBodyComma",6, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // Property ::= CLASS_IDENTIFIERS Connect PropertyPair 
+          case 11: // Individuals ::= IndividualsHead IndividualsBody 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Property",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("Individuals",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // Property ::= PROPERTY_IDENTIFIERS_HAS Connect PropertyPair 
+          case 12: // Individuals ::= 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Property",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("Individuals",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // Property ::= PROPERTY_IDENTIFIERS_IS Connect PropertyPair 
+          case 13: // IndividualsHead ::= INDIVIDUALS_COLON BROKEN_LINE 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Property",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualsHead",8, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // Connect ::= SOME 
+          case 14: // IndividualsBody ::= INDIVIDUAL_NAME IndividualNameComma 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualsBody",9, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // Connect ::= OR 
+          case 15: // IndividualNameComma ::= COMMA BROKEN_LINE INDIVIDUAL_NAME IndividualNameComma 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualNameComma",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // Connect ::= AND 
+          case 16: // IndividualNameComma ::= 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualNameComma",10, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // Connect ::= ALL 
+          case 17: // PrimitiveClass ::= ClassHeader PrimitiveClassBody DisjointAndIndividuals 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("PrimitiveClass",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // Connect ::= NOT 
+          case 18: // PrimitiveClassBody ::= SubClassOfHead SubClassOfBody 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("PrimitiveClassBody",12, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // Connect ::= EXACTLY 
+          case 19: // SubClassOfHead ::= SUBCLASS_OF_COLON BROKEN_LINE 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("SubClassOfHead",13, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // Connect ::= VALUE 
+          case 20: // SubClassOfBody ::= SubClassOfBodyIten COMMA BROKEN_LINE SubClassOfBody 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("SubClassOfBody",14, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // Connect ::= THAT 
+          case 21: // SubClassOfBody ::= SubClassOfBodyIten 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connect",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("SubClassOfBody",14, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 22: // PropertyPair ::= CLASS_IDENTIFIERS 
+          case 22: // SubClassOfBodyIten ::= PropertyIdentifier Connector SubClassOfBodyItenPair 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("PropertyPair",9, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("SubClassOfBodyIten",15, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // PropertyPair ::= DATA_TYPE 
+          case 23: // SubClassOfBodyIten ::= CLASS_IDENTIFIERS 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("PropertyPair",9, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("SubClassOfBodyIten",15, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // DisjointClassesDescription ::= DISJOINT_CLASSES_COLON DisjointClassesList 
+          case 24: // PropertyIdentifier ::= PROPERTY_IDENTIFIERS_HAS 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClassesDescription",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("PropertyIdentifier",16, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // DisjointClassesDescription ::= 
+          case 25: // PropertyIdentifier ::= PROPERTY_IDENTIFIERS_IS 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClassesDescription",10, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("PropertyIdentifier",16, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 26: // DisjointClassesList ::= CLASS_IDENTIFIERS ClassesIdentifiersAgroup 
+          case 26: // PropertyIdentifier ::= CLASS_IDENTIFIERS 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("DisjointClassesList",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("PropertyIdentifier",16, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 27: // ClassesIdentifiersAgroup ::= COMMA DisjointClassesList 
+          case 27: // Connector ::= SOME 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("ClassesIdentifiersAgroup",12, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("Connector",17, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 28: // ClassesIdentifiersAgroup ::= 
+          case 28: // SubClassOfBodyItenPair ::= CLASS_IDENTIFIERS 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("ClassesIdentifiersAgroup",12, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("SubClassOfBodyItenPair",18, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 29: // IndividualsDescription ::= INDIVIDUALS_COLON IndividualsList 
+          case 29: // SubClassOfBodyItenPair ::= DATA_TYPE 
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualsDescription",13, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // IndividualsDescription ::= 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualsDescription",13, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 31: // IndividualsList ::= INDIVIDUAL_NAME IndividualsAgroup 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualsList",14, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 32: // IndividualsAgroup ::= COMMA IndividualsList 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualsAgroup",15, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 33: // IndividualsAgroup ::= 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("IndividualsAgroup",15, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("SubClassOfBodyItenPair",18, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 

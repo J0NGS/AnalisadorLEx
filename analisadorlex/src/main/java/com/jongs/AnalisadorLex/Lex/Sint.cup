@@ -2,73 +2,64 @@ import java_cup.runtime.*;
 
 parser code {:
 
-    public void report_error(String message, Object info) {
-        System.err.println("Error: " + message);
+    public void report_error(String message, Object info)  {
+        int line = ((Symbol) info).left;
+        String token = ((Symbol) info).value.toString();
+        String previousToken = ((Symbol) ((Symbol) info).value).left != -1 ? ((Symbol) ((Symbol) info).value).value.toString() : "N/A";
+        String nextToken = ((Symbol) ((Symbol) info).value).right != -1 ? Integer.toString(((Symbol) ((Symbol) info).value).right) : "N/A";
+        String tokenType = Integer.toString(((Symbol) info).sym);
+        
+        System.out.println("Error at line " + line + ": Token '" + token + "' (Type: " + tokenType + ") - " + message);
+        System.out.println("Previous Token: " + previousToken);
+        System.out.println("Next Token: " + nextToken);
     }
 
-    public void report_fatal_error(String message, Object info) {
-        report_error(message, info);
-        throw new RuntimeException("Fatal error occurred.");
+    public void report_fatal_error(String message, Object info)  {
+        int line = ((Symbol) info).left;
+        String token = ((Symbol) info).value.toString();
+        String previousToken = ((Symbol) ((Symbol) info).value).left != -1 ? ((Symbol) ((Symbol) info).value).value.toString() : "N/A";
+        String nextToken = ((Symbol) ((Symbol) info).value).right != -1 ? Integer.toString(((Symbol) ((Symbol) info).value).right) : "N/A";
+        String tokenType = Integer.toString(((Symbol) info).sym);
+        
+        System.out.println("Fatal Error at line " + line + ": Token '" + token + "' (Type: " + tokenType + ") - " + message);
+        System.out.println("Previous Token: " + previousToken);
+        System.out.println("Next Token: " + nextToken);
+        System.exit(-1);
     }
-:};
 
-/* Terminals */
-terminal SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON, DISJOINT_CLASSES_COLON, 
-        CLASS_IDENTIFIERS, INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS_HAS, PROPERTY_IDENTIFIERS_IS, DATA_TYPE, CARDINALITY, COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, 
-        RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN, EQUAL_GREATER_THAN, COMMA, DOUBLE_QUOTE, BROKEN_LINE, WHITESPACE, ONLY, SSN;
+:}
 
-/* Non-terminals */
-non terminal Object Classes, ClassDefinition, ClassDescription, DescriptionPrimitive, DescriptionDefined, Properties, AgroupProperties, Property, Connect, PropertyPair, 
-        DisjointClassesDescription, DisjointClassesList, ClassesIdentifiersAgroup, IndividualsDescription, IndividualsList, IndividualsAgroup, Error;
+terminal SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
+terminal DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS,INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS_HAS, PROPERTY_IDENTIFIERS_IS, DATA_TYPE, CARDINALITY;
+terminal COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
+terminal EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS;
 
-/* Start symbol */
-start with Classes;
+non terminal Class, ClassHeader, DisjointAndIndividuals, DisjointClasses, DisjointClassesHead, DisjointClassesBody, DisjointClassesBodyComma;
+non terminal Individuals, IndividualsHead, IndividualsBody, IndividualNameComma, PrimitiveClass, PrimitiveClassBody, SubClassOfHead;
+non terminal SubClassOfBody, SubClassOfBodyIten, PropertyIdentifier, Connector, SubClassOfBodyItenPair;
 
-/* Productions */
-Classes ::= ClassDefinition | Classes ClassDefinition;
+start with Class;
 
-ClassDefinition ::= CLASS_COLON CLASS_IDENTIFIERS ClassDescription;
+Class::= PrimitiveClass | error;
 
-ClassDescription ::= DescriptionPrimitive DisjointClassesDescription IndividualsDescription
-                   | DescriptionDefined DisjointClassesDescription IndividualsDescription;
+ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS BROKEN_LINE;
 
-DescriptionPrimitive ::= SUBCLASS_OF_COLON Properties;
+DisjointAndIndividuals::= DisjointClasses Individuals;
 
-DescriptionDefined ::= EQUIVALENT_TO_COLON Properties;
+DisjointClasses::= DisjointClassesHead DisjointClassesBody BROKEN_LINE | /*e*/;
+DisjointClassesHead::= DISJOINT_CLASSES_COLON BROKEN_LINE;
+DisjointClassesBody::= CLASS_IDENTIFIERS DisjointClassesBodyComma;
+DisjointClassesBodyComma::= COMMA CLASS_IDENTIFERS DisjointClassesBodyComma| /*e*/;
+Individuals::= IndividualsHead IndividualsBody | /*e*/;
+IndividualsHead::= INDIVIDUALS_COLON BROKEN_LINE;
+IndividualsBody::= INDIVIDUAL_NAME IndividualNameComma;
+IndividualNameComma::= COMMA BROKEN_LINE INDIVIDUAL_NAME IndividualNameComma | /*e*/;
 
-Properties ::= Property AgroupProperties;
-
-AgroupProperties ::= COMMA Properties
-                  | /* e */;
-
-Property ::= CLASS_IDENTIFIERS Connect PropertyPair
-            | PROPERTY_IDENTIFIERS_HAS Connect PropertyPair
-            | PROPERTY_IDENTIFIERS_IS Connect PropertyPair;
-
-Connect ::= SOME
-         | OR
-         | AND
-         | ALL
-         | NOT
-         | EXACTLY
-         | VALUE
-         | THAT;
-
-PropertyPair ::= CLASS_IDENTIFIERS
-              | DATA_TYPE;
-
-DisjointClassesDescription ::= DISJOINT_CLASSES_COLON DisjointClassesList
-                            | /* e */;
-
-DisjointClassesList ::= CLASS_IDENTIFIERS ClassesIdentifiersAgroup;
-
-ClassesIdentifiersAgroup ::= COMMA DisjointClassesList
-                          | /* e */;
-
-IndividualsDescription ::= INDIVIDUALS_COLON IndividualsList
-                         | /* e */;
-
-IndividualsList ::= INDIVIDUAL_NAME IndividualsAgroup;
-
-IndividualsAgroup ::= COMMA IndividualsList
-                   | /* e */;
+PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals;
+PrimitiveClassBody::= SubClassOfHead SubClassOfBody;
+SubClassOfHead::= SUBCLASS_OF_COLON BROKEN_LINE;
+SubClassOfBody::= SubClassOfBodyIten COMMA BROKEN_LINE SubClassOfBody | SubClassOfBodyIten;
+SubClassOfBodyIten::= PropertyIdentifier Connector SubClassOfBodyItenPair | CLASS_IDENTIFIERS;
+PropertyIdentifier::= PROPERTY_IDENTIFIERS_HAS | PROPERTY_IDENTIFIERS_IS | CLASS_IDENTIFIERS;
+Connector::= SOME;
+SubClassOfBodyItenPair::= CLASS_IDENTIFIERS | DATA_TYPE;
