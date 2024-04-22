@@ -28,18 +28,17 @@ parser code {:
 
 :}
 
-//----------------------------------TOKENS----------------------------------
+/*----------------------------------TOKENS----------------------------------*/
 terminal SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
 terminal DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS,INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, DATA_TYPE, CARDINALITY;
 terminal COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
 terminal EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS;
 
-//----------------------------------PRODUÇÕES----------------------------------
+/*----------------------------------PRODUÇÕES----------------------------------*/
 non terminal Class, ClassHeader, DisjointAndIndividuals, DisjointClasses, DisjointClassesHead, DisjointClassesBody, DisjointClassesBodyComma;
 non terminal Individuals, IndividualsHead, IndividualsBody, IndividualNameComma, PrimitiveClass, PrimitiveClassBody, SubClassOfHead;
 non terminal SubClassOfBody, SubClassOfBodyIten, PropertyIdentifier, Connector, SubClassOfBodyItenPair;
 
-//----------------------------------Gramática----------------------------------
 start with Class;
 
 Class::= PrimitiveClass Class| error | /*e*/;
@@ -65,4 +64,4 @@ SubClassOfBodyIten::= PropertyIdentifier Connector SubClassOfBodyItenPair | CLAS
 PropertyIdentifier::= PROPERTY_IDENTIFIERS | CLASS_IDENTIFIERS;
 Connector::= SOME | AND | OR;
 SubClassOfBodyItenPair::= CLASS_IDENTIFIERS | DATA_TYPE;
-//----------------------------------FIM----------------------------------
+/*----------------------------------FIM----------------------------------*/
