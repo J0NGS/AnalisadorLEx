@@ -20,7 +20,7 @@ public class TestLexer {
         // Caminhos dos arquivos
         String rootPath = Paths.get("").toAbsolutePath().toString();
         String subPath = "/analisadorlex/src/main/java/com/jongs/AnalisadorLex/test";
-        String sourceCode = rootPath + subPath + "/testePrimitiva.OWL";
+        String sourceCode = rootPath + subPath + "/teste.OWL";
         String outputFilePath = rootPath + subPath + "/tokens_output.txt";
 
         // Inicializa o analisador léxico
@@ -38,7 +38,7 @@ public class TestLexer {
         while ((symbol = lexical.next_token()) != null  && eof == 0) {
             // Adiciona o token à lista
             token = symbol.value.toString();
-            tokenList.add(token);
+            tokenList.add("token->" + token + "     tipo do token->" + sym.terminalNames[symbol.sym] );
 
             // Atualiza o contador de tokens
             tokenCountMap.put(sym.terminalNames[symbol.sym], tokenCountMap.getOrDefault(sym.terminalNames[symbol.sym], 0) + 1);

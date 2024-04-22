@@ -1,36 +1,51 @@
 import java_cup.runtime.*;
-
 parser code {:
 
     public void report_error(String message, Object info)  {
+        // Obtém o número da linha onde ocorreu o erro
         int line = ((Symbol) info).left;
-        String token = ((Symbol) info).value.toString();
-        String previousToken = ((Symbol) ((Symbol) info).value).left != -1 ? ((Symbol) ((Symbol) info).value).value.toString() : "N/A";
-        String nextToken = ((Symbol) ((Symbol) info).value).right != -1 ? Integer.toString(((Symbol) ((Symbol) info).value).right) : "N/A";
-        String tokenType = Integer.toString(((Symbol) info).sym);
+        // Obtém o token que causou o erro
+        Symbol tokenSymbol = (Symbol) info;
+        String token = tokenSymbol.value.toString();
         
-        System.out.println("Error at line " + line + ": Token '" + token + "' (Type: " + tokenType + ") - " + message);
-        System.out.println("Previous Token: " + previousToken);
-        System.out.println("Next Token: " + nextToken);
+        // Obtém o token anterior
+        Symbol previousTokenSymbol = tokenSymbol.prev();
+        String previousToken = (previousTokenSymbol != null) ? previousTokenSymbol.value.toString() : "N/A";
+        
+        // Obtém o token posterior
+        Symbol nextTokenSymbol = tokenSymbol.next();
+        String nextToken = (nextTokenSymbol != null) ? nextTokenSymbol.value.toString() : "N/A";
+        
+        // Especifica o tipo de erro e o contexto
+        String errorMessage = "Syntax Error at line " + line + " - Token: " + token + " - Previous Token: " + previousToken + " - Next Token: " + nextToken + " - " + message;
+        System.out.println(errorMessage);
     }
 
     public void report_fatal_error(String message, Object info)  {
+        // Obtém o número da linha onde ocorreu o erro
         int line = ((Symbol) info).left;
-        String token = ((Symbol) info).value.toString();
-        String previousToken = ((Symbol) ((Symbol) info).value).left != -1 ? ((Symbol) ((Symbol) info).value).value.toString() : "N/A";
-        String nextToken = ((Symbol) ((Symbol) info).value).right != -1 ? Integer.toString(((Symbol) ((Symbol) info).value).right) : "N/A";
-        String tokenType = Integer.toString(((Symbol) info).sym);
+        // Obtém o token que causou o erro
+        Symbol tokenSymbol = (Symbol) info;
+        String token = tokenSymbol.value.toString();
         
-        System.out.println("Fatal Error at line " + line + ": Token '" + token + "' (Type: " + tokenType + ") - " + message);
-        System.out.println("Previous Token: " + previousToken);
-        System.out.println("Next Token: " + nextToken);
+        // Obtém o token anterior
+        Symbol previousTokenSymbol = tokenSymbol.prev();
+        String previousToken = (previousTokenSymbol != null) ? previousTokenSymbol.value.toString() : "N/A";
+        
+        // Obtém o token posterior
+        Symbol nextTokenSymbol = tokenSymbol.next();
+        String nextToken = (nextTokenSymbol != null) ? nextTokenSymbol.value.toString() : "N/A";
+        
+        // Especifica o tipo de erro e o contexto
+        String errorMessage = "Fatal Syntax Error at line " + line + " - Token: " + token + " - Previous Token: " + previousToken + " - Next Token: " + nextToken + " - " + message;
+        System.out.println(errorMessage);
         System.exit(-1);
     }
 
 :}
 
 terminal SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
-terminal DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS,INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS_HAS, PROPERTY_IDENTIFIERS_IS, DATA_TYPE, CARDINALITY;
+terminal DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS,INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, DATA_TYPE, CARDINALITY;
 terminal COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
 terminal EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS;
 
@@ -60,6 +75,6 @@ PrimitiveClassBody::= SubClassOfHead SubClassOfBody;
 SubClassOfHead::= SUBCLASS_OF_COLON BROKEN_LINE;
 SubClassOfBody::= SubClassOfBodyIten COMMA BROKEN_LINE SubClassOfBody | SubClassOfBodyIten;
 SubClassOfBodyIten::= PropertyIdentifier Connector SubClassOfBodyItenPair | CLASS_IDENTIFIERS;
-PropertyIdentifier::= PROPERTY_IDENTIFIERS_HAS | PROPERTY_IDENTIFIERS_IS | CLASS_IDENTIFIERS;
+PropertyIdentifier::= PROPERTY_IDENTIFIERS | CLASS_IDENTIFIERS;
 Connector::= SOME;
 SubClassOfBodyItenPair::= CLASS_IDENTIFIERS | DATA_TYPE;

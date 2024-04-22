@@ -17,7 +17,7 @@ public class TestParser {
         // Caminho do arquivo de entrada
         String rootPath = Paths.get("").toAbsolutePath().toString();
         String subPath = "/analisadorlex/src/main/java/com/jongs/AnalisadorLex/test";
-        String sourceCode = rootPath + subPath + "/testePrimitiva.OWL";
+        String sourceCode = rootPath + subPath + "/teste.OWL";
 
         // Inicializa o analisador sintático
         parser parser = new parser(new Lexer(new FileReader(sourceCode)));
@@ -27,7 +27,6 @@ public class TestParser {
             Symbol result = parser.parse();
             // Se a análise sintática for bem-sucedida, exibe o resultado
             System.out.println("Análise sintática concluída com sucesso.");
-            System.out.println("Resultado: " + result.value);
         } catch (Exception e) {
             // Em caso de erro, exibe a mensagem de erro
             System.out.println("Erro durante a análise sintática: " + e.getMessage());

@@ -41,9 +41,8 @@ DISJOINT_CLASSES_COLON = "DisjointClasses:"
 WHITESPACE = [\t\r\n\f]
 
 CLASS_IDENTIFIERS = [A-Z][a-zA-Z]*(_[A-Z][a-zA-Z]*)*
-INDIVIDUAL_NAME = [A-Z][a-zA-Z0-9]*\d+
-PROPERTY_IDENTIFIERS_HAS = "has"[A-Za-z0-9]+
-PROPERTY_IDENTIFIERS_IS = "is"[A-Za-z0-9]+"Of"
+INDIVIDUAL_NAME = [A-Z][a-zA-Z0-9]*//\d+
+PROPERTY_IDENTIFIERS = [a-z]+([A-Z]+[a-zA-Z]*)*
 DATA_TYPE = ("owl"|"rdfs"|"xsd"):[a-zA-Z]+
 CARDINALITY = [0-9]+
 COMMENT = \#.*
@@ -84,8 +83,7 @@ SSN = "ssn"
 {DISJOINT_CLASSES_COLON} { return symbol (sym.DISJOINT_CLASSES_COLON, yytext()); }
 {CLASS_IDENTIFIERS} { return symbol (sym.CLASS_IDENTIFIERS, yytext()); }
 {INDIVIDUAL_NAME} { return symbol (sym.INDIVIDUAL_NAME, yytext()); }
-{PROPERTY_IDENTIFIERS_HAS} { return symbol (sym.PROPERTY_IDENTIFIERS_HAS, yytext()); }
-{PROPERTY_IDENTIFIERS_IS} { return symbol (sym.PROPERTY_IDENTIFIERS_IS, yytext()); }
+{PROPERTY_IDENTIFIERS} { return symbol (sym.PROPERTY_IDENTIFIERS, yytext()); }
 {DATA_TYPE} { return symbol (sym.DATA_TYPE, yytext()); }
 {CARDINALITY} { return symbol (sym.CARDINALITY, Float.parseFloat(yytext())); }
 {COMMENT} { return symbol (sym.COMMENT, yytext()); }
