@@ -1,6 +1,6 @@
 import java_cup.runtime.*;
 parser code {:
-
+//----------------------------------Funções de erro----------------------------------
     public void report_error(String message, Object info)  {
         // Obtém o número da linha onde ocorreu o erro
         int line = ((Symbol) info).left;
@@ -8,16 +8,8 @@ parser code {:
         Symbol tokenSymbol = (Symbol) info;
         String token = tokenSymbol.value.toString();
         
-        // Obtém o token anterior
-        Symbol previousTokenSymbol = tokenSymbol.prev();
-        String previousToken = (previousTokenSymbol != null) ? previousTokenSymbol.value.toString() : "N/A";
-        
-        // Obtém o token posterior
-        Symbol nextTokenSymbol = tokenSymbol.next();
-        String nextToken = (nextTokenSymbol != null) ? nextTokenSymbol.value.toString() : "N/A";
-        
         // Especifica o tipo de erro e o contexto
-        String errorMessage = "Syntax Error at line " + line + " - Token: " + token + " - Previous Token: " + previousToken + " - Next Token: " + nextToken + " - " + message;
+        String errorMessage = "Syntax Error at line " + (line + 1 ) + " - Token: " + token +"      |"+ message;
         System.out.println(errorMessage);
     }
 
@@ -28,53 +20,49 @@ parser code {:
         Symbol tokenSymbol = (Symbol) info;
         String token = tokenSymbol.value.toString();
         
-        // Obtém o token anterior
-        Symbol previousTokenSymbol = tokenSymbol.prev();
-        String previousToken = (previousTokenSymbol != null) ? previousTokenSymbol.value.toString() : "N/A";
-        
-        // Obtém o token posterior
-        Symbol nextTokenSymbol = tokenSymbol.next();
-        String nextToken = (nextTokenSymbol != null) ? nextTokenSymbol.value.toString() : "N/A";
-        
         // Especifica o tipo de erro e o contexto
-        String errorMessage = "Fatal Syntax Error at line " + line + " - Token: " + token + " - Previous Token: " + previousToken + " - Next Token: " + nextToken + " - " + message;
+        String errorMessage = "Syntax Error at line " + (line + 1) + " - Token: " + token +"      |"+ message;
         System.out.println(errorMessage);
         System.exit(-1);
     }
 
 :}
 
+//----------------------------------TOKENS----------------------------------
 terminal SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
 terminal DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS,INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, DATA_TYPE, CARDINALITY;
 terminal COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
 terminal EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS;
 
+//----------------------------------PRODUÇÕES----------------------------------
 non terminal Class, ClassHeader, DisjointAndIndividuals, DisjointClasses, DisjointClassesHead, DisjointClassesBody, DisjointClassesBodyComma;
 non terminal Individuals, IndividualsHead, IndividualsBody, IndividualNameComma, PrimitiveClass, PrimitiveClassBody, SubClassOfHead;
 non terminal SubClassOfBody, SubClassOfBodyIten, PropertyIdentifier, Connector, SubClassOfBodyItenPair;
 
+//----------------------------------Gramática----------------------------------
 start with Class;
 
-Class::= PrimitiveClass | error;
+Class::= PrimitiveClass Class| error | /*e*/;
 
-ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS BROKEN_LINE;
+ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS;
 
 DisjointAndIndividuals::= DisjointClasses Individuals;
 
-DisjointClasses::= DisjointClassesHead DisjointClassesBody BROKEN_LINE | /*e*/;
-DisjointClassesHead::= DISJOINT_CLASSES_COLON BROKEN_LINE;
+DisjointClasses::= DisjointClassesHead DisjointClassesBody| /*e*/;
+DisjointClassesHead::= DISJOINT_CLASSES_COLON;
 DisjointClassesBody::= CLASS_IDENTIFIERS DisjointClassesBodyComma;
-DisjointClassesBodyComma::= COMMA CLASS_IDENTIFERS DisjointClassesBodyComma| /*e*/;
+DisjointClassesBodyComma::= COMMA DisjointClassesBody| /*e*/;
 Individuals::= IndividualsHead IndividualsBody | /*e*/;
-IndividualsHead::= INDIVIDUALS_COLON BROKEN_LINE;
+IndividualsHead::= INDIVIDUALS_COLON;
 IndividualsBody::= INDIVIDUAL_NAME IndividualNameComma;
-IndividualNameComma::= COMMA BROKEN_LINE INDIVIDUAL_NAME IndividualNameComma | /*e*/;
+IndividualNameComma::= COMMA IndividualsBody | /*e*/;
 
-PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals;
+PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals{:System.out.println("Classe primitiva detectada\n" + $1);:};
 PrimitiveClassBody::= SubClassOfHead SubClassOfBody;
-SubClassOfHead::= SUBCLASS_OF_COLON BROKEN_LINE;
-SubClassOfBody::= SubClassOfBodyIten COMMA BROKEN_LINE SubClassOfBody | SubClassOfBodyIten;
+SubClassOfHead::= SUBCLASS_OF_COLON;
+SubClassOfBody::= SubClassOfBodyIten COMMA SubClassOfBody | SubClassOfBodyIten;
 SubClassOfBodyIten::= PropertyIdentifier Connector SubClassOfBodyItenPair | CLASS_IDENTIFIERS;
 PropertyIdentifier::= PROPERTY_IDENTIFIERS | CLASS_IDENTIFIERS;
-Connector::= SOME;
+Connector::= SOME | AND | OR;
 SubClassOfBodyItenPair::= CLASS_IDENTIFIERS | DATA_TYPE;
+//----------------------------------FIM----------------------------------

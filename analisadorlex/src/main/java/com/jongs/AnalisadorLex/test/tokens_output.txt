@@ -1,81 +1,43 @@
 token->Class:     tipo do token->CLASS_COLON
 token->Customer     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Person     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->PurchasedPizza     tipo do token->CLASS_IDENTIFIERS
 token->some     tipo do token->SOME
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasPhone     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->xsd:string     tipo do token->DATA_TYPE
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Customer1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer10     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer2     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer3     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer4     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer5     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer6     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer7     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer8     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Customer9     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->Employee     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->SubClassOf:     tipo do token->SUBCLASS_OF_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Person     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->ssn     tipo do token->SSN
@@ -83,98 +45,50 @@ token->min     tipo do token->MIN
 token->1.0     tipo do token->CARDINALITY
 token->xsd:string     tipo do token->DATA_TYPE
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Chef1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Manager1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Waiter1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->Waiter2     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->SubClassOf:     tipo do token->SUBCLASS_OF_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->hasBase     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->PizzaBase     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasCaloricContent     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->xsd:integer     tipo do token->DATA_TYPE
-token->
-     tipo do token->BROKEN_LINE
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->PizzaBase     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->PizzaTopping     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->CustomPizza1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->CustomPizza2     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->CheesyPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->CheeseTopping     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->CheesyPizza1     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->HighCaloriePizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasCaloricContent     tipo do token->PROPERTY_IDENTIFIERS
@@ -185,18 +99,10 @@ token->>=     tipo do token->GREATER_THAN
 token->400.0     tipo do token->CARDINALITY
 token->]     tipo do token->RIGHT_BRACKET
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->InterestingPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
@@ -204,18 +110,10 @@ token->min     tipo do token->MIN
 token->3.0     tipo do token->CARDINALITY
 token->PizzaTopping     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->LowCaloriePizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasCaloricContent     tipo do token->PROPERTY_IDENTIFIERS
@@ -226,55 +124,31 @@ token-><     tipo do token->LESS_THAN
 token->400.0     tipo do token->CARDINALITY
 token->]     tipo do token->RIGHT_BRACKET
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->NamedPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->SubClassOf:     tipo do token->SUBCLASS_OF_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->AmericanaHotPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->SubClassOf:     tipo do token->SUBCLASS_OF_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->NamedPizza     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->JalapenoPepperTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->MozzarellaTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->PepperoniTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->TomatoTopping     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->AmericanaHotPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->AmericanaPizza     tipo do token->CLASS_IDENTIFIERS
@@ -282,57 +156,31 @@ token->,      tipo do token->COMMA
 token->MargheritaPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->SohoPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->AmericanaHotPizza1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->AmericanaHotPizza2     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->AmericanaHotPizza3     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->ChicagoAmericanaHotPizza1     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->AmericanaPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->SubClassOf:     tipo do token->SUBCLASS_OF_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->NamedPizza     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->MozzarellaTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->PepperoniTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->TomatoTopping     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->AmericanaHotPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->AmericanaPizza     tipo do token->CLASS_IDENTIFIERS
@@ -340,55 +188,31 @@ token->,      tipo do token->COMMA
 token->MargheritaPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->SohoPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->AmericanaPizza1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->AmericanaPizza2     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->MargheritaPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->SubClassOf:     tipo do token->SUBCLASS_OF_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->NamedPizza     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->MozzarellaTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->TomatoTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->only     tipo do token->ONLY
-token->
-     tipo do token->BROKEN_LINE
 token->(     tipo do token->LEFT_PAREN
 token->MozzarellaTopping     tipo do token->CLASS_IDENTIFIERS
 token->or     tipo do token->OR
 token->TomatoTopping     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->AmericanaHotPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->AmericanaPizza     tipo do token->CLASS_IDENTIFIERS
@@ -396,57 +220,33 @@ token->,      tipo do token->COMMA
 token->MargheritaPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->SohoPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->MargheritaPizza1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->MargheritaPizza2     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->SohoPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->SubClassOf:     tipo do token->SUBCLASS_OF_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->NamedPizza     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->MozzarellaTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->OliveTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->ParmesanTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->TomatoTopping     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->only     tipo do token->ONLY
-token->
-     tipo do token->BROKEN_LINE
 token->(     tipo do token->LEFT_PAREN
 token->MozzarellaTopping     tipo do token->CLASS_IDENTIFIERS
 token->or     tipo do token->OR
@@ -456,11 +256,7 @@ token->ParmesanTopping     tipo do token->CLASS_IDENTIFIERS
 token->or     tipo do token->OR
 token->TomatoTopping     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->AmericanaHotPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->AmericanaPizza     tipo do token->CLASS_IDENTIFIERS
@@ -468,28 +264,14 @@ token->,      tipo do token->COMMA
 token->MargheritaPizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->SohoPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->SohoPizza1     tipo do token->INDIVIDUAL_NAME
-token->,     tipo do token->COMMA
-token->
-     tipo do token->BROKEN_LINE
+token->,     tipo do token->COMMA
 token->SohoPizza2     tipo do token->INDIVIDUAL_NAME
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->SpicyPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
@@ -500,67 +282,39 @@ token->value     tipo do token->VALUE
 token->Hot     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->VegetarianPizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->only     tipo do token->ONLY
-token->
-     tipo do token->BROKEN_LINE
 token->(     tipo do token->LEFT_PAREN
 token->CheeseTopping     tipo do token->CLASS_IDENTIFIERS
 token->or     tipo do token->OR
 token->VegetableTopping     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
 token->)     tipo do token->RIGHT_PAREN
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->PizzaBase     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->PizzaBase     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->PizzaTopping     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->PizzaTopping     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->PizzaBase     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->PizzaTopping     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->Class:     tipo do token->CLASS_COLON
 token->Spiciness     tipo do token->CLASS_IDENTIFIERS
-token->
-     tipo do token->BROKEN_LINE
 token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
-token->
-     tipo do token->BROKEN_LINE
 token->{     tipo do token->LEFT_BRACE
 token->Hot     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA

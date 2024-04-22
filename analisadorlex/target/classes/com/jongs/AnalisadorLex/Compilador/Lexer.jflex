@@ -100,7 +100,7 @@ SSN = "ssn"
 {EQUAL_GREATER_THAN} { return symbol (sym.GREATER_THAN, yytext()); }
 {COMMA} {return symbol (sym.COMMA, yytext()); }
 {DOUBLE_QUOTE} { return symbol (sym.DOUBLE_QUOTE, yytext()); }
-{BROKEN_LINE} { return symbol (sym.BROKEN_LINE, yytext()); }
+{BROKEN_LINE} { /**/ }
 {WHITESPACE} {/**/}
 
 . { throw new Error("Caractere inválido <"+ yytext()+">\n na linha <"+ yyline + ">\n coluna < "+ yycolumn + ">"); }

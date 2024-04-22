@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.jongs.AnalisadorLex.Lex.Lexer;
-import com.jongs.AnalisadorLex.Lex.sym;
+import com.jongs.AnalisadorLex.Compilador.Lexer;
+import com.jongs.AnalisadorLex.Compilador.sym;
 
 import java_cup.runtime.Symbol;
 
@@ -19,7 +19,7 @@ public class TestLexer {
     public static void main(String[] args) throws IOException {
         // Caminhos dos arquivos
         String rootPath = Paths.get("").toAbsolutePath().toString();
-        String subPath = "/analisadorlex/src/main/java/com/jongs/AnalisadorLex/test";
+        String subPath = "/analisadorlex/src/main/resources";
         String sourceCode = rootPath + subPath + "/teste.OWL";
         String outputFilePath = rootPath + subPath + "/tokens_output.txt";
 
