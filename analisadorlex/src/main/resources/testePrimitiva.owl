@@ -55,3 +55,10 @@ Class: Employee
         Person
          and (hasTelefone some xsd:integer)
          and (hasMan some Man)
+         and (hasTall some xsd:integer[>= 185])
+Class: Person
+
+    SubClassOf:
+        Human
+        or Animal
+        or Living

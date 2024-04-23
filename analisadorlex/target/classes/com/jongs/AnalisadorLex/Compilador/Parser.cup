@@ -42,7 +42,7 @@ terminal Integer CARDINALITY_INTEGER;
 non terminal Object ClassOwl, ClassHeader, DisjointClasses, DisjointClassesDescription,DisjointClassesList,IndividualsDescription;
 non terminal Object IndividualsList, DisjointAndIndividuals,PrimitiveClass, PrimitiveClassBody, PrimitiveClassBodyDescription, PrimitiveClassBodyList, LogicalConnector;
 non terminal Object PrimitiveClassBodyListItem, PrimitiveSomeItem, DataType, DataTypeInteger, DataTypeFloat, DataTypeString, Individuals;
-non terminal Object NameSpaceHeader, SubClassOf, PrimitiveClassBodyListItemPair;
+non terminal Object NameSpaceHeader, SubClassOfPrimitiveClass, PrimitiveClassBodyListItemPair, Property, ComparissonSign, Quantifier, EquivalentTo;
 precedence left NOT, AND, OR;   
 start with ClassOwl;
 
@@ -58,16 +58,23 @@ IndividualsDescription::= IndividualsList | /*e*/;
 IndividualsList::= INDIVIDUAL_NAME COMMA IndividualsList | INDIVIDUAL_NAME; 
 DisjointAndIndividuals::= DisjointClasses Individuals;
 
-PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals {:System.out.println("\n---!!Classe primitiva!!---");:};
-PrimitiveClassBody::= SUBCLASS_OF_COLON PrimitiveClassBodyDescription;
-PrimitiveClassBodyDescription::= PrimitiveClassBodyList | /*e*/;
-PrimitiveClassBodyList::= PrimitiveClassBodyListItem COMMA PrimitiveClassBodyList | PrimitiveClassBodyListItem | PrimitiveClassBodyListItem LogicalConnector PrimitiveClassBodyListItem;
-PrimitiveClassBodyListItem::= CLASS_IDENTIFIERS | PROPERTY_IDENTIFIERS:p {:System.out.println("Nova propriedade detectada: " + p);:} SOME PrimitiveSomeItem | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN PrimitiveClassBodyListItemPair;
-PrimitiveClassBodyListItemPair::= LogicalConnector PrimitiveClassBodyListItem | /*e*/;
-LogicalConnector::= AND | OR | NOT;
-PrimitiveSomeItem::= CLASS_IDENTIFIERS {:System.out.println("---OBJECT PROPERTY---\n");:} | DataType {:System.out.println("---DATA PROPERTY---\n");:} | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN;
+Property::= PROPERTY_IDENTIFIERS:p {:System.out.println("Nova propriedade detectada: " + p);:} | SSN:s {:System.out.println("Nova propriedade detectada: " + s);:}; 
+LogicalConnector::= AND:a {:System.out.println("Conectivo lógico encontrado: " + a);:} | OR:o {:System.out.println("Conectivo lógico encontrado: " + o);:} | NOT:n {:System.out.println("Conectivo lógico encontrado: " + n);:};
+PrimitiveSomeItem::= CLASS_IDENTIFIERS:c {:System.out.println("Classe como propriedade encontrada" + c + "\n" + "\n---OBJECT PROPERTY---\n");:} | DataType {:System.out.println("\n---DATA PROPERTY---\n");:} | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN;
 DataType::= DataTypeInteger | DataTypeFloat | DataTypeString;
-DataTypeInteger::= NameSpaceHeader COLON INTEGER | NameSpaceHeader COLON INTEGER LEFT_BRACKET CARDINALITY_INTEGER RIGHT_BRACKET;
-DataTypeFloat::= NameSpaceHeader COLON FLOAT | NameSpaceHeader COLON INTEGER LEFT_BRACKET CARDINALITY_FLOAT RIGHT_BRACKET;
-DataTypeString::= NameSpaceHeader COLON STRING;
-NameSpaceHeader::= NAMESPACE_OWL | NAMESPACE_RDFS | NAMESPACE_XSD;
+DataTypeInteger::= NameSpaceHeader COLON INTEGER:i {:System.out.println("Type integer encontrado: " + i);:} | NameSpaceHeader COLON INTEGER:i {:System.out.println("Type integer encontrado: " + i);:} LEFT_BRACKET ComparissonSign CARDINALITY_INTEGER:c {:System.out.println("Inteiro encontrado: " + c);:} RIGHT_BRACKET;
+DataTypeFloat::= NameSpaceHeader COLON FLOAT:f {:System.out.println("Type float encontrado: " + f);:} | NameSpaceHeader COLON FLOAT:f {:System.out.println("Type float encontrado: " + f);:} LEFT_BRACKET ComparissonSign CARDINALITY_FLOAT:c {:System.out.println("Float encontrado: " + c);:} RIGHT_BRACKET;
+DataTypeString::= NameSpaceHeader COLON STRING:s {:System.out.println("Type string encontrado: " + s);:};
+ComparissonSign::= GREATER_THAN | LESS_THAN | EQUAL | EQUAL_LESS_THAN | EQUAL_GREATER_THAN; 
+NameSpaceHeader::= NAMESPACE_OWL:o {:System.out.println("Namespace encontrado: " + o);:} | NAMESPACE_RDFS:r {:System.out.println("Namespace encontrado: " + r);:} | NAMESPACE_XSD:x {:System.out.println("Namespace encontrado: " + x);:};
+
+PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals {:System.out.println("\n---!!Classe primitiva!!---\n");:};
+PrimitiveClassBody::= SubClassOfPrimitiveClass;
+SubClassOfPrimitiveClass::= SUBCLASS_OF_COLON PrimitiveClassBodyDescription;
+PrimitiveClassBodyDescription::= PrimitiveClassBodyList | /*e*/;
+PrimitiveClassBodyList::= PrimitiveClassBodyListItem COMMA PrimitiveClassBodyList | PrimitiveClassBodyListItem | PrimitiveClassBodyListItem LogicalConnector PrimitiveClassBodyList;
+PrimitiveClassBodyListItem::= CLASS_IDENTIFIERS:c {:System.out.println("Classe como propriedade encontrada: " + c);:} | Property Quantifier PrimitiveSomeItem | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN PrimitiveClassBodyListItemPair;
+Quantifier::= SOME | ALL;
+
+
+PrimitiveClassBodyListItemPair::= LogicalConnector PrimitiveClassBodyListItem | /*e*/;
