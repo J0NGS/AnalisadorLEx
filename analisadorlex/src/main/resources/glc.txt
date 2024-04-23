@@ -3,16 +3,25 @@ Class::= PrimitiveClass Class | error |/*e*/;
 ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS:i {:System.out.println("=========================\n" + "Nova classe detectada: " + i);:};
 
 SubClassOf::= SUBCLASS_OF_COLON SubClassOfDescription;
-SubClassOfDescription::= SubClassOfItem COMMA SubClassOfList | SubClassOfItem | /*e*/;
+SubClassOfDescription::= SubClassOfIList| SubClassOfItem | /*e*/;
 SubClassOfList::= SubClassOfItem | SubClassOfItem COMMA SubClassOfList; 
 SubClassOfItem::= CLASS_IDENTIFIERS | Expr;
 
-QuantifierExpr::= QuantifierExprItem QuantifierConnector QuantifierExprItem;
-QuantifierExprItem::= 
+Expr::= LogicalExpr | PropertyExpr;
+
+PropertyExpr::= QuantifierExpr | CardinalityExpr;
+QuantifierExpr::= Property QuantifierConnector QuantifierExprItem;
+QuantifierExprItem::= CLASS_IDENTIFIERS | DataType | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET |LEFT_PAREN PropertyExpr RIGHT_PAREN;
+QuantifierConnector::= SOMA | ALL | VALUE;
+
+CardinalityExpr::= Property CardinalityConnector Cardinality CardinalityExprItem;x
+CardinalityExprItem::= CLASS_IDENTIFIERS | DataType | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET |LEFT_PAREN PropertyExpr RIGHT_PAREN;
+CardinalityConnector::= MIN | MAX | EXACTLY;
+Property::= PROPERTY_IDENTIFIERS | SSN;
+
 LogicalExpr::= LogicalExprItem LogicalConnector LogicalExprItem; 
 LogicalConnector::= NOT | AND | OR;
-LogicalExprItem::= LEFT_PAREN LogicalExpr RIGHT_PAREN | LEFT_PAREN QuantifierExpr RIGHT_PAREN | CLASS_IDENTIFIERS | Property;
-Property::= PROPERTY_IDENTIFIERS | SSN;
+LogicalExprItem::= CLASS_IDENTIFIERS | LEFT_PAREN Expr RIGHT_PAREN;
 
 DataType::= NameSpaceHead COLON Type;
 Type::= INTEGER | FLOAT | STRING;
