@@ -1,41 +1,119 @@
-Class -> PrimitiveClass
-	|DefinedClass
-	|Error
-	
-ClassHeader-> CLASS_COLON CLASS_IDENTIFIERS BROKEN_LINE
+owl::= primitive_class owl | defined_class owl | enumerated_class owl | covered_class owl | error owl | /* ε */;
 
-DisjointAndIndividuals-> DisjointClasses Individuals
+primitive_class : class subclass_of disjoint_classes individuals {
+                    if ($2) System.out.println("\n✅ Classe com axioma de fechamento");
+                    else System.out.println("\n✅ Classe primitiva");
+                }
+                | class logi_conn_eq_to subclass_of disjoint_classes individuals {
+                    if ($3) System.out.println("\n✅ Classe com axioma de fechamento");
+                    else System.out.println("\n✅ Classe primitiva");
+                }
+                ;
 
-DisjointClasses-> DisjointClassesHead DisjointClassesBody BROKEN_LINE
-		| e
-DisjointClassesHead-> DISJOINT_CLASSES_COLON BROKEN_LINE
-DisjointClassesBody-> CLASS_IDENTIFIERS DisjointClassesBodyComma
-DisjointClassesBodyComma-> COMMA CLASS _IDENTIFERS DisjointClassesBodyComma
-			  |e
+defined_class   : class equivalent_to disjoint_classes individuals {
+                    if ($2) System.out.println("\n✅ Classe com descrições aninhadas");
+                    else System.out.println("\n✅ Classe definida");
+                }
+                ;
 
-Individuals-> IndividualsHead IndividualsBody
-	    | e
-IndividualsHead-> INDIVIDUALS_COLON BROKEN_LINE
-IndividualsBody-> INDIVIDUAL_NAME IndividualNameComma
-IndividualNameComma-> COMMA BROKEN_LINE INDIVIDUAL_NAME IndividualNameComma
-		    | e
+enumerated_class: class instance_eq_to disjoint_classes individuals {
+                    System.out.println("\n✅ Classe enumerada");
+                }
+                ;
+                
+covered_class   : class logi_conn_eq_to disjoint_classes individuals {
+                    System.out.println("\n✅ Classe coberta");
+                }
+                ;
 
-ClassEnd-> BROKEN_LINE
-	  |EOF
-	  |e
+subclass_of     : SUBCLASS_OF_COLON quantifier_list                { $$ = $2;    }
+                | SUBCLASS_OF_COLON class_identifiers COMMA quantifier_list   { $$ = $4;    }
+                | SUBCLASS_OF_COLON class_identifiers                       { $$ = false; }
+                ;
 
+equivalent_to   : EQUIVALENT_TO_COLON class_identifiers AND logical_conn_p  { $$ = $5;    }
+                ;
 
-PrimitiveClass-> ClassHeader PrimitiveClassBody DisjointAndIndividuals ClassEnd
-PrimitiveClassBody-> SubClassOfHead SubClassOfBody
-SubClassOfHead-> SUBCLASS_COLON BROKEN LINE
-SubClassOfBody-> SubClassOfBodyIten COMMA BROKEN LINE SubClassOfBody
-		|SubClassOfBodyIten
+instance_eq_to  : EQUIVALENT_TO_COLON LEFT_BRACE individual_list RIGHT_BRACE
+                ;
 
-SubClassOfIten-> 
+logi_conn_eq_to : EQUIVALENT_TO_COLON logical_conn_c
+                ;
 
+quantifier_list : quantifier COMMA quantifier_list                { $$ = $1 || $3; }
+                | logical_conn_p COMMA quantifier_list            { $$ = false;    }
+                | quantifier
+                ;
 
+disjoint_classes: DISJOINT_CLASSES_COLON class_list
+                | DISJOINT_WITH_COLON class_identifiers
+                | /* ε */
+                ;
 
+class_list      : class_identifiers COMMA class_list
+                | class_identifiers
+                ;
 
-DefinedClass-> ClassHeader DefinedClassBody DisjointAndIndividuals ClassEnd
-		    
+individuals     : INDIVIDUALS_COLON individual_list
+                | /* ε */
+                ;
 
+individual_list : INDIVIDUAL_NAME COMMA individual_list
+                | INDIVIDUAL_NAME
+                ;
+
+quantifier      : some                                  { $$ = $1;    }
+                | min                                   { $$ = false; }
+                | max                                   { $$ = false; }
+                | exactly                               { $$ = false; }
+                | value                                 { $$ = false; }
+                | only                                  { $$ = true;  }
+                | LEFT_PAREN quantifier RIGHT_PAREN    { $$ = $2;    }
+                | NOT quantifier                       { $$ = $2;    }
+                ;
+
+some            : PROPERTY_IDENTIFIERS SOME class_identifiers                 { addObjProp($1); $$ = false;   }
+                | PROPERTY_IDENTIFIERS SOME DATA_TYPE                { addDataProp($1); $$ = false;  }
+                | PROPERTY_IDENTIFIERS SOME LEFT_PAREN quantifier RIGHT_PAREN       { $$ = true;                    }
+                | PROPERTY_IDENTIFIERS SOME LEFT_PAREN logical_conn_c RIGHT_PAREN   { addObjProp($1); $$ = true;    }
+                ;
+
+only            : PROPERTY_IDENTIFIERS ONLY class_identifiers                 { addObjProp($1); }
+                | PROPERTY_IDENTIFIERS ONLY LEFT_PAREN logical_conn_c RIGHT_PAREN   { addObjProp($1); }
+                ;
+
+min             : PROPERTY_IDENTIFIERS MIN CARDINALITY_INTEGER class_identifiers          { addObjProp($1); }
+                ;
+
+max             : PROPERTY_IDENTIFIERS MAX CARDINALITY_INTEGER class_identifiers          { addObjProp($1); }
+                ;
+
+exactly         : PROPERTY_IDENTIFIERS EXACTLY CARDINALITY_INTEGER class_identifiers      { addObjProp($1); }
+                ;
+
+value           : PROPERTY_IDENTIFIERS VALUE INDIVIDUAL_NAME           { addObjProp($1); }
+                ;
+
+data_type       : DATA_TYPE LEFT_BRACKET RELOP number RIGHT_BRACKET
+                | DATA_TYPE
+                ;
+
+number          : CARDINALITY_INTEGER
+                | CARDINALITY_FLOAT
+                ;
+
+logical_conn_c  : class_identifiers AND logical_conn_c
+                | class_identifiers OR logical_conn_c
+                | class_identifiers
+                ;
+
+logical_conn_p  : quantifier AND quantifier_conn   { $$ = $1 || $3; }
+                | quantifier OR quantifier_conn    { $$ = $1 || $3; }
+                | quantifier
+                ;
+
+quantifier_conn : quantifier AND quantifier_conn        { $$ = $1 || $3; }
+                | quantifier OR quantifier_conn         { $$ = $1 || $3; }
+                | LEFT_PAREN quantifier_conn RIGHT_PAREN               { $$ = $2;       }
+                | quantifier
+                ;

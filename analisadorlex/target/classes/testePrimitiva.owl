@@ -53,4 +53,5 @@ Class: Employee
 
     SubClassOf:
         Person
-         and (ssn min 1 xsd:string)
+         and (hasTelefone some xsd:integer)
+         and (hasMan some Man)

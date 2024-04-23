@@ -3,6 +3,7 @@ package com.jongs.AnalisadorLex.test;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 import com.jongs.AnalisadorLex.Compilador.Lexer;
 import com.jongs.AnalisadorLex.Compilador.parser;
@@ -14,7 +15,10 @@ public class TestParser {
         // Caminho do arquivo de entrada
         String rootPath = Paths.get("").toAbsolutePath().toString();
         String subPath = "/analisadorlex/src/main/resources";
-        String sourceCode = rootPath + subPath + "/testePrimitiva.owl";
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Digite o nome do arquivo a passar pelo analisador sintático");
+        String sourceFile = scn.nextLine(); 
+        String sourceCode = rootPath + subPath + "/" + sourceFile;
         
 
         // Inicializa o analisador sintático

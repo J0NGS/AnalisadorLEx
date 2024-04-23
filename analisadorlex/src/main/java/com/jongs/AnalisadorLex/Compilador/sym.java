@@ -8,14 +8,14 @@ package com.jongs.AnalisadorLex.Compilador;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int CARDINALITY_INTEGER = 46;
+  public static final int CARDINALITY_INTEGER = 47;
   public static final int RIGHT_PAREN = 28;
   public static final int THAT = 8;
   public static final int DISJOINT_CLASSES_COLON = 17;
   public static final int SOME = 2;
   public static final int RIGHT_BRACKET = 30;
   public static final int CLASS_IDENTIFIERS = 18;
-  public static final int CARDINALITY_FLOAT = 45;
+  public static final int CARDINALITY_FLOAT = 46;
   public static final int NAMESPACE_XSD = 23;
   public static final int COMMENT = 24;
   public static final int CLASS_COLON = 13;
@@ -51,6 +51,7 @@ public class sym {
   public static final int ALL = 3;
   public static final int VALUE = 4;
   public static final int INDIVIDUAL_NAME = 19;
+  public static final int INVERSE = 45;
   public static final int LESS_THAN = 32;
   public static final int PROPERTY_IDENTIFIERS = 20;
   public static final int MAX = 6;
@@ -101,6 +102,7 @@ public class sym {
   "FLOAT",
   "STRING",
   "COLON",
+  "INVERSE",
   "CARDINALITY_FLOAT",
   "CARDINALITY_INTEGER"
   };

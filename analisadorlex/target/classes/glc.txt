@@ -1,39 +1,28 @@
-start with Class;
-Class::= PrimitiveClass Class | error |/*e*/;
-ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS:i {:System.out.println("=========================\n" + "Nova classe detectada: " + i);:};
+Start with ClassOwl
 
-SubClassOf::= SUBCLASS_OF_COLON SubClassOfDescription;
-SubClassOfDescription::= SubClassOfIList| SubClassOfItem | /*e*/;
-SubClassOfList::= SubClassOfItem | SubClassOfItem COMMA SubClassOfList; 
-SubClassOfItem::= CLASS_IDENTIFIERS | Expr;
+ClassOwl::= PrimitiveClass ClassOwl | error | /*e*/;
+ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS;
 
-Expr::= LogicalExpr | PropertyExpr;
 
-PropertyExpr::= QuantifierExpr | CardinalityExpr;
-QuantifierExpr::= Property QuantifierConnector QuantifierExprItem;
-QuantifierExprItem::= CLASS_IDENTIFIERS | DataType | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET |LEFT_PAREN PropertyExpr RIGHT_PAREN;
-QuantifierConnector::= SOMA | ALL | VALUE;
-
-CardinalityExpr::= Property CardinalityConnector Cardinality CardinalityExprItem;x
-CardinalityExprItem::= CLASS_IDENTIFIERS | DataType | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET |LEFT_PAREN PropertyExpr RIGHT_PAREN;
-CardinalityConnector::= MIN | MAX | EXACTLY;
-Property::= PROPERTY_IDENTIFIERS | SSN;
-
-LogicalExpr::= LogicalExprItem LogicalConnector LogicalExprItem; 
-LogicalConnector::= NOT | AND | OR;
-LogicalExprItem::= CLASS_IDENTIFIERS | LEFT_PAREN Expr RIGHT_PAREN;
-
-DataType::= NameSpaceHead COLON Type;
-Type::= INTEGER | FLOAT | STRING;
-NameSpaceHead::= NAMESPACE_OWL | NAMESPACE_RDFS | NAMESPACE_XSD;
-ComparisonOperator::= GREATER_THAN | LESS_THAN | EQUAL | EQUAL_LESS_THAN | EQUAL_GREATER_THAN;
-Cardinality::= CARDINALITY_INTEGER | CARDINALITY_FLOAT;
-
-DisjointClasses::= DISJOINT_CLASSES_COLON DisjointClassesList | /*e*/;
-DisjointClassesList::= CLASS_IDENTIFIERS COMMA DisjointClassesList | CLASS_IDENTIFIERS | /*e*/;
-Individuals::= INDIVIDUALS_COLON IndividualsList | /*e*/;
-IndividualsList::= INDIVIDUAL_NAME COMMA IndividualsList | INDIVIDUAL_NAME | /*e*/; 
+DisjointClasses::= DISJOINT_CLASSES_COLON DisjointClassesDescription | /*e*/;
+DisjointClassesDescription::= DisjointClassesList | /*e*/;
+DisjointClassesList::= CLASS_IDENTIFIERS COMMA DisjointClassesList | CLASS_IDENTIFIERS;
+Individuals::= INDIVIDUALS_COLON IndividualsDescription | /*e*/;
+IndividualsDescription::= IndividualsList | /*e*/;
+IndividualsList::= INDIVIDUAL_NAME COMMA IndividualsList | INDIVIDUAL_NAME; 
 DisjointAndIndividuals::= DisjointClasses Individuals;
 
-PrimitiveClass::= ClassHeader PrimitiviClassBody {:System.out.println("---!!Classe primitiva!!---");:};
-PrimitiviClassBody::= SubClassOf DisjointAndIndividuals;
+PrimitiveClass::= ClassHeader PrimitiviClassBody;
+PrimitiveClassBody::= SUBCLASS_OF_COLON PrimitiveClassBodyDescription;
+PrimitiveClassBodyDescription::= PrimitiveClassBodyList | /*e*/;
+
+PrimitiveClassBodyList::= PrimitiveClassBodyListItem COMMA PrimitiveClassBodyList | PrimitiveClassBodyListItem;
+LogicalConnector::= AND | OR | NOT;
+PrimitiveClassBodyListItem::= CLASS_IDENTIFIERS | PROPERTY_IDENTIFIERS SOME PrimitiveSomeItem | ;
+PrimitiveSomeItem::= CLASS_IDENTIFIERS | DataType | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN;
+DataType::= DataTypeInteger | DataTypeFloat | DataTypeString;
+DataTypeInteger::= NameSpaceHeader COLON INTEGER | NameSpaceHeader COLON INTEGER LEFT_BRACKET CARDINALITY_INTEGER RIGHT_BRACKET;
+DataTypeFloat::= NameSpaceHeader COLON FLOAT | NameSpaceHeader COLON INTEGER LEFT_BRACKET CARDINALITY_FLOAT RIGHT_BRACKET;
+DataTypeString::= NameSpaceHeader COLON STRING;
+
+PrimitiveClass::= ClassHeader SubClassOf DisjointAndIndividuals;
