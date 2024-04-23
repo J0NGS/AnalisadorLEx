@@ -41,19 +41,34 @@ terminal Integer CARDINALITY_INTEGER;
 /*----------------------------------PRODUÇÕES----------------------------------*/
 non terminal Object Class, ClassHeader, SubClassOf, SubClassOfList, SubClassOfItem, ExprSubClassOf, ExprSubClassOfSome, PropertyIdentifiers, SubClassOfSomeItemExpr;
 non terminal Object DataType, Type, NameSpaceHead, ComparisonOperator, Cardinality, DisjointClasses, DisjointClassesList, Individuals, IndividualsList, DisjointAndIndividuals;
-non terminal Object PrimitiveClass, PrimitiviClassBody;
+non terminal Object PrimitiveClass, PrimitiviClassBody, SubClassOfDescription, SubClassOIList, Expr, LogicalExpr, QuantifierExpr, CardinalityExpr, PropertyExpr, Property;
+non terminal Object QuantifierConnector, CardinalityConnector, LogicalConnector, LogicalExprItem, QuantifierExprItem, CardinalityExprItem;
 
 start with Class;
 Class::= PrimitiveClass Class | error |/*e*/;
 ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS:i {:System.out.println("=========================\n" + "Nova classe detectada: " + i);:};
 
-SubClassOf::= SUBCLASS_OF_COLON SubClassOfList;
-SubClassOfList::= SubClassOfItem COMMA SubClassOfList | SubClassOfItem;
-SubClassOfItem::= CLASS_IDENTIFIERS | ExprSubClassOf | /*e*/;
-ExprSubClassOf::= ExprSubClassOfSome;
-ExprSubClassOfSome::=  PropertyIdentifiers SOME SubClassOfSomeItemExpr;
-PropertyIdentifiers::= PROPERTY_IDENTIFIERS | SSN;
-SubClassOfSomeItemExpr::= DataType | CLASS_IDENTIFIERS | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET;
+SubClassOf::= SUBCLASS_OF_COLON SubClassOfDescription;
+SubClassOfDescription::= SubClassOfList| /*e*/;
+SubClassOfList::= SubClassOfItem | SubClassOfItem COMMA SubClassOfList; 
+SubClassOfItem::= CLASS_IDENTIFIERS | Expr;
+
+Expr::= LogicalExpr | PropertyExpr;
+
+PropertyExpr::= QuantifierExpr | CardinalityExpr;
+QuantifierExpr::= Property QuantifierConnector QuantifierExprItem;
+QuantifierExprItem::= CLASS_IDENTIFIERS | DataType | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET | LEFT_PAREN PropertyExpr RIGHT_PAREN;
+QuantifierConnector::= SOME | ALL | VALUE;
+
+CardinalityExpr::= Property CardinalityConnector Cardinality CardinalityExprItem;
+CardinalityExprItem::= CLASS_IDENTIFIERS | DataType | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET | LEFT_PAREN PropertyExpr RIGHT_PAREN;
+CardinalityConnector::= MIN | MAX | EXACTLY;
+Property::= PROPERTY_IDENTIFIERS:p {:System.out.println("\nNova propriedade detectada: " + p);:} | SSN:s{:System.out.println("\nNova propriedade detectada: " + s);:};
+
+LogicalExpr::= LogicalExprItem LogicalConnector LogicalExprItem {:System.out.println("\n---!!Operação lógica!!---");:}; 
+LogicalConnector::= NOT:n {:System.out.println("\nOperador lógico detectado: " + n);:} | AND:a {:System.out.println("\nOperador lógico detectado: " + a);:} | OR:o {:System.out.println("\nOperador lógico detectado: " + o);:};
+LogicalExprItem::= CLASS_IDENTIFIERS:c {:System.out.println("\nitem de expressão lógica: " + c);:} | LEFT_PAREN Expr RIGHT_PAREN {:System.out.println("\nExpressão como item de expressão lógica");:};
+
 DataType::= NameSpaceHead COLON Type;
 Type::= INTEGER | FLOAT | STRING;
 NameSpaceHead::= NAMESPACE_OWL | NAMESPACE_RDFS | NAMESPACE_XSD;
@@ -66,6 +81,5 @@ Individuals::= INDIVIDUALS_COLON IndividualsList | /*e*/;
 IndividualsList::= INDIVIDUAL_NAME COMMA IndividualsList | INDIVIDUAL_NAME | /*e*/; 
 DisjointAndIndividuals::= DisjointClasses Individuals;
 
-PrimitiveClass::= ClassHeader PrimitiviClassBody {:System.out.println("---!!Classe primitiva!!---");:};
+PrimitiveClass::= ClassHeader PrimitiviClassBody {:System.out.println("\n---!!Classe primitiva!!---");:};
 PrimitiviClassBody::= SubClassOf DisjointAndIndividuals;
-

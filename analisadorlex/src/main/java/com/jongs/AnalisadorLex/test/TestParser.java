@@ -14,7 +14,7 @@ public class TestParser {
         // Caminho do arquivo de entrada
         String rootPath = Paths.get("").toAbsolutePath().toString();
         String subPath = "/analisadorlex/src/main/resources";
-        String sourceCode = rootPath + subPath + "/teste.OWL";
+        String sourceCode = rootPath + subPath + "/testePrimitiva.owl";
         
 
         // Inicializa o analisador sintático

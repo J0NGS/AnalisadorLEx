@@ -43,3 +43,14 @@ Class: NamedPizza
 
     SubClassOf: 
         Pizza
+
+
+Class: NothingPizza
+
+    SubClassOf: 
+
+Class: Employee
+
+    SubClassOf:
+        Person
+         and (ssn min 1 xsd:string)
