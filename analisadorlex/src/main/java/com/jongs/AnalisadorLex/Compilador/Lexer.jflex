@@ -22,6 +22,12 @@ import java_cup.runtime.*;
 %column
 
 
+NAMESPACE_OWL = "owl"
+NAMESPACE_RDFS = "rdfs"
+NAMESPACE_XSD = "xsd"
+INTEGER = "integer"
+FLOAT = "float"
+STRING = "string"
 SOME = "some"
 ALL = "all"
 VALUE = "value"
@@ -43,8 +49,8 @@ WHITESPACE = [\t\r\n\f]
 CLASS_IDENTIFIERS = [A-Z][a-zA-Z]*(_[A-Z][a-zA-Z]*)*
 INDIVIDUAL_NAME = [A-Z][a-zA-Z0-9]*//\d+
 PROPERTY_IDENTIFIERS = [a-z]+([A-Z]+[a-zA-Z]*)*
-DATA_TYPE = ("owl"|"rdfs"|"xsd"):[a-zA-Z]+
-CARDINALITY = [0-9]+
+CARDINALITY_INTEGER = [0-9]+
+CARDINALITY_FLOAT = [0-9]+([.][0-9]+)*
 COMMENT = \#.*
 LEFT_BRACE = "{"
 RIGHT_BRACE = "}"
@@ -61,9 +67,21 @@ DOUBLE_QUOTE = "\""
 BROKEN_LINE = [\r\n\f]+
 WHITESPACE = [ \t\r\f]*
 COMMA = ("," | "," {WHITESPACE})
+COLON = ":"
 SSN = "ssn"
 
 %%
+{COMMA} {return symbol (sym.COMMA, yytext()); }
+{COLON} {return symbol (sym.COLON, yytext()); }
+{DOUBLE_QUOTE} { return symbol (sym.DOUBLE_QUOTE, yytext()); }
+{BROKEN_LINE} { /**/ }
+{WHITESPACE} {/**/}
+{NAMESPACE_OWL} { return symbol (sym.NAMESPACE_OWL, yytext()); }
+{NAMESPACE_RDFS} { return symbol (sym.NAMESPACE_RDFS, yytext()); }
+{NAMESPACE_XSD} { return symbol (sym.NAMESPACE_XSD, yytext()); }
+{INTEGER} { return symbol (sym.INTEGER, yytext()); }
+{FLOAT} { return symbol (sym.FLOAT, yytext()); }
+{STRING} { return symbol (sym.STRING, yytext()); }
 {SSN} { return symbol(sym.SSN, yytext()); }
 {SOME} { return symbol(sym.SOME, yytext()); }
 {ALL} { return symbol(sym.ALL, yytext()); }
@@ -84,8 +102,8 @@ SSN = "ssn"
 {CLASS_IDENTIFIERS} { return symbol (sym.CLASS_IDENTIFIERS, yytext()); }
 {INDIVIDUAL_NAME} { return symbol (sym.INDIVIDUAL_NAME, yytext()); }
 {PROPERTY_IDENTIFIERS} { return symbol (sym.PROPERTY_IDENTIFIERS, yytext()); }
-{DATA_TYPE} { return symbol (sym.DATA_TYPE, yytext()); }
-{CARDINALITY} { return symbol (sym.CARDINALITY, Float.parseFloat(yytext())); }
+{CARDINALITY_INTEGER} { return symbol (sym.CARDINALITY_INTEGER, Integer.parseInt(yytext())); }
+{CARDINALITY_FLOAT} { return symbol (sym.CARDINALITY_FLOAT, Float.parseFloat(yytext())); }
 {COMMENT} { return symbol (sym.COMMENT, yytext()); }
 {LEFT_BRACE} { return symbol (sym.LEFT_BRACE, yytext()); }
 {RIGHT_BRACE} { return symbol (sym.RIGHT_BRACE, yytext()); }
@@ -98,10 +116,6 @@ SSN = "ssn"
 {EQUAL} { return symbol (sym.EQUAL, yytext()); }
 {EQUAL_LESS_THAN} { return symbol (sym.EQUAL_LESS_THAN, yytext()); }
 {EQUAL_GREATER_THAN} { return symbol (sym.GREATER_THAN, yytext()); }
-{COMMA} {return symbol (sym.COMMA, yytext()); }
-{DOUBLE_QUOTE} { return symbol (sym.DOUBLE_QUOTE, yytext()); }
-{BROKEN_LINE} { /**/ }
-{WHITESPACE} {/**/}
 
 . { throw new Error("Caractere inválido <"+ yytext()+">\n na linha <"+ yyline + ">\n coluna < "+ yycolumn + ">"); }
 

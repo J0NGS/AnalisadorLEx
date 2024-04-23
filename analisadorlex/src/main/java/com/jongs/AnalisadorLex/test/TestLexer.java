@@ -22,7 +22,6 @@ public class TestLexer {
         String subPath = "/analisadorlex/src/main/resources";
         String sourceCode = rootPath + subPath + "/teste.OWL";
         String outputFilePath = rootPath + subPath + "/tokens_output.txt";
-
         // Inicializa o analisador léxico
         Lexer lexical = new Lexer(new FileReader(sourceCode));
         String token;

@@ -1,0 +1,71 @@
+import java_cup.runtime.*;
+parser code {:
+//----------------------------------Funções de erro----------------------------------
+    public void report_error(String message, Object info)  {
+        // Obtém o número da linha onde ocorreu o erro
+        int line = ((Symbol) info).left;
+        // Obtém o token que causou o erro
+        Symbol tokenSymbol = (Symbol) info;
+        String token = tokenSymbol.value.toString();
+        
+        // Especifica o tipo de erro e o contexto
+        String errorMessage = "Syntax Error at line " + (line + 1 ) + " - Token: " + token +"      |"+ message;
+        System.out.println(errorMessage);
+    }
+
+    public void report_fatal_error(String message, Object info)  {
+        // Obtém o número da linha onde ocorreu o erro
+        int line = ((Symbol) info).left;
+        // Obtém o token que causou o erro
+        Symbol tokenSymbol = (Symbol) info;
+        String token = tokenSymbol.value.toString();
+        
+        // Especifica o tipo de erro e o contexto
+        String errorMessage = "Syntax Error at line " + (line + 1) + " - Token: " + token +"      |"+ message;
+        System.out.println(errorMessage);
+        System.exit(-1);
+    }
+
+:}
+
+/*definindo scan*/
+scan with {: return super.scan(); :};
+
+/*----------------------------------TOKENS----------------------------------*/
+terminal String SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
+terminal String DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS, INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, NAMESPACE_OWL, NAMESPACE_RDFS, NAMESPACE_XSD;
+terminal String COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
+terminal String EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS, INTEGER, FLOAT, STRING, COLON;
+terminal Float CARDINALITY_FLOAT;
+terminal Integer CARDINALITY_INTEGER; 
+/*----------------------------------PRODUÇÕES----------------------------------*/
+non terminal Object Class, ClassHeader, SubClassOf, SubClassOfList, SubClassOfItem, ExprSubClassOf, ExprSubClassOfSome, PropertyIdentifiers, SubClassOfSomeItemExpr;
+non terminal Object DataType, Type, NameSpaceHead, ComparisonOperator, Cardinality, DisjointClasses, DisjointClassesList, Individuals, IndividualsList, DisjointAndIndividuals;
+non terminal Object PrimitiveClass, PrimitiviClassBody;
+
+start with Class;
+Class::= PrimitiveClass Class | error |/*e*/;
+ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS:i {:System.out.println("=========================\n" + "Nova classe detectada: " + i);:};
+
+SubClassOf::= SUBCLASS_OF_COLON SubClassOfList;
+SubClassOfList::= SubClassOfItem COMMA SubClassOfList | SubClassOfItem;
+SubClassOfItem::= CLASS_IDENTIFIERS | ExprSubClassOf | /*e*/;
+ExprSubClassOf::= ExprSubClassOfSome;
+ExprSubClassOfSome::=  PropertyIdentifiers SOME SubClassOfSomeItemExpr;
+PropertyIdentifiers::= PROPERTY_IDENTIFIERS | SSN;
+SubClassOfSomeItemExpr::= DataType | CLASS_IDENTIFIERS | DataType LEFT_BRACKET ComparisonOperator Cardinality RIGHT_BRACKET;
+DataType::= NameSpaceHead COLON Type;
+Type::= INTEGER | FLOAT | STRING;
+NameSpaceHead::= NAMESPACE_OWL | NAMESPACE_RDFS | NAMESPACE_XSD;
+ComparisonOperator::= GREATER_THAN | LESS_THAN | EQUAL | EQUAL_LESS_THAN | EQUAL_GREATER_THAN;
+Cardinality::= CARDINALITY_INTEGER | CARDINALITY_FLOAT;
+
+DisjointClasses::= DISJOINT_CLASSES_COLON DisjointClassesList | /*e*/;
+DisjointClassesList::= CLASS_IDENTIFIERS COMMA DisjointClassesList | CLASS_IDENTIFIERS | /*e*/;
+Individuals::= INDIVIDUALS_COLON IndividualsList | /*e*/;
+IndividualsList::= INDIVIDUAL_NAME COMMA IndividualsList | INDIVIDUAL_NAME | /*e*/; 
+DisjointAndIndividuals::= DisjointClasses Individuals;
+
+PrimitiveClass::= ClassHeader PrimitiviClassBody {:System.out.println("---!!Classe primitiva!!---");:};
+PrimitiviClassBody::= SubClassOf DisjointAndIndividuals;
+

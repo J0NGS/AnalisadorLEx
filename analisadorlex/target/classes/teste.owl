@@ -55,7 +55,7 @@ Class: HighCaloriePizza
 
     EquivalentTo: 
         Pizza
-         and (hasCaloricContent some xsd:integer[>= 400])
+         and (hasCaloricContent some xsd:integer[>= 400.0])
 
 Class: InterestingPizza
 
@@ -67,7 +67,7 @@ Class: LowCaloriePizza
 
     EquivalentTo: 
         Pizza
-         and (hasCaloricContent some xsd:integer[< 400])
+         and (hasCaloricContent some xsd:integer[< 400.50])
 
 Class: NamedPizza
 

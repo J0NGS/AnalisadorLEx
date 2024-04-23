@@ -28,39 +28,56 @@ parser code {:
 
 :}
 
+/*definindo scan*/
+scan with {: return super.scan(); :};
+
 /*----------------------------------TOKENS----------------------------------*/
-terminal SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
-terminal DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS,INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, DATA_TYPE, CARDINALITY;
-terminal COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
-terminal EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS;
+terminal String SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
+terminal String DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS,INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, DATA_TYPE;
+terminal String COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
+terminal String EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS;
+terminal Float CARDINALITY_FLOAT;
+terminal Integer CARDINALITY_INTEGER;
 
 /*----------------------------------PRODUÇÕES----------------------------------*/
-non terminal Class, ClassHeader, DisjointAndIndividuals, DisjointClasses, DisjointClassesHead, DisjointClassesBody, DisjointClassesBodyComma;
-non terminal Individuals, IndividualsHead, IndividualsBody, IndividualNameComma, PrimitiveClass, PrimitiveClassBody, SubClassOfHead;
-non terminal SubClassOfBody, SubClassOfBodyIten, PropertyIdentifier, Connector, SubClassOfBodyItenPair;
+non terminal Object Class, ClassHeader, DisjointAndIndividuals, DisjointClasses, DisjointClassesHead, DisjointClassesBody, DisjointClassesBodyComma;
+non terminal Object Individuals, IndividualsHead, IndividualsBody, IndividualNameComma, PrimitiveClass, PrimitiveClassBody, SubClassOfHead;
+non terminal Object SubClassOfBody, SubClassOfBodyIten, PropertyIdentifier, Connector, SubClassOfBodyItenPair;
 
 start with Class;
+/*----------------------------------Class----------------------------------*/
 
-Class::= PrimitiveClass Class| error | /*e*/;
-
-ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS;
-
+Class::= PrimitiveClass Class | DefinedClass Class | error | /*e*/;
+ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS:i {:System.out.println("=========================\n" + "Classe detectada: " + i);:};
+/*----------------------------------DisjointAndIndividuals----------------------------------*/
 DisjointAndIndividuals::= DisjointClasses Individuals;
 
 DisjointClasses::= DisjointClassesHead DisjointClassesBody| /*e*/;
 DisjointClassesHead::= DISJOINT_CLASSES_COLON;
 DisjointClassesBody::= CLASS_IDENTIFIERS DisjointClassesBodyComma;
 DisjointClassesBodyComma::= COMMA DisjointClassesBody| /*e*/;
+
 Individuals::= IndividualsHead IndividualsBody | /*e*/;
 IndividualsHead::= INDIVIDUALS_COLON;
 IndividualsBody::= INDIVIDUAL_NAME IndividualNameComma;
 IndividualNameComma::= COMMA IndividualsBody | /*e*/;
-
-PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals{:System.out.println("Classe primitiva detectada\n" + $1);:};
-PrimitiveClassBody::= SubClassOfHead SubClassOfBody;
+/*----------------------------------PrimitiveClass----------------------------------*/
+PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals{:System.out.println("Classe primitiva!!!!" + "\n=========================\n");:};
+PrimitiveClassBody::= SubClassOfHead SubClassOfPrimitiveBody;
+/*----------------------------------SubClassOff----------------------------------*/
 SubClassOfHead::= SUBCLASS_OF_COLON;
-SubClassOfBody::= SubClassOfBodyIten COMMA SubClassOfBody | SubClassOfBodyIten;
-SubClassOfBodyIten::= PropertyIdentifier Connector SubClassOfBodyItenPair | CLASS_IDENTIFIERS;
+SubClassOfPrimitiveBody::= SubClassOfBodyIten COMMA SubClassOfPrimitiveBody | SubClassOfBodyIten;
+SubClassOfPrimitiveBodyIten::= PropertyIdentifier Connector SubClassOfBodyPrimitiveItenPair | CLASS_IDENTIFIERS | /**/;
+PropertyIdentifier::= PROPERTY_IDENTIFIERS | CLASS_IDENTIFIERS;
+
+Connector::= SOME | AND | OR;
+SubClassOfBodyItenPair::= CLASS_IDENTIFIERS | DATA_TYPE;
+/*----------------------------------DefinedClass----------------------------------*/
+DefinedClass::= ClassHeader DefinedClassClassBody DisjointAndIndividuals{:System.out.println("Classe primitiva!!!!" + "\n=========================\n");:};
+DefinedClassBody::= EquivalentToHead EquivalentToBody;
+EquivalentToHead::= EQUIVALENT_TO_COLON;
+EquivalentToBody::= EquivalentToBodyIten COMMA SubClassOfBody | SubClassOfBodyIten;
+EquivalentToBodyIten::= PropertyIdentifier Connector SubClassOfBodyItenPair | CLASS_IDENTIFIERS;
 PropertyIdentifier::= PROPERTY_IDENTIFIERS | CLASS_IDENTIFIERS;
 Connector::= SOME | AND | OR;
 SubClassOfBodyItenPair::= CLASS_IDENTIFIERS | DATA_TYPE;

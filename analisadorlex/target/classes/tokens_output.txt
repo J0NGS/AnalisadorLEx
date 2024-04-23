@@ -4,7 +4,7 @@ token->EquivalentTo:     tipo do token->EQUIVALENT_TO_COLON
 token->Person     tipo do token->CLASS_IDENTIFIERS
 token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
-token->PurchasedPizza     tipo do token->CLASS_IDENTIFIERS
+token->purchasedPizza     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
@@ -12,7 +12,9 @@ token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasPhone     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
-token->xsd:string     tipo do token->DATA_TYPE
+token->xsd     tipo do token->NAMESPACE_XSD
+token->:     tipo do token->COLON
+token->string     tipo do token->STRING
 token->)     tipo do token->RIGHT_PAREN
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
 token->Customer1     tipo do token->INDIVIDUAL_NAME
@@ -42,13 +44,15 @@ token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->ssn     tipo do token->SSN
 token->min     tipo do token->MIN
-token->1.0     tipo do token->CARDINALITY
-token->xsd:string     tipo do token->DATA_TYPE
+token->1     tipo do token->CARDINALITY_INTEGER
+token->xsd     tipo do token->NAMESPACE_XSD
+token->:     tipo do token->COLON
+token->string     tipo do token->STRING
 token->)     tipo do token->RIGHT_PAREN
 token->Individuals:     tipo do token->INDIVIDUALS_COLON
-token->Chef1     tipo do token->INDIVIDUAL_NAME
+token->Chef     tipo do token->CLASS_IDENTIFIERS
 token->,     tipo do token->COMMA
-token->Manager1     tipo do token->INDIVIDUAL_NAME
+token->Manager     tipo do token->CLASS_IDENTIFIERS
 token->,     tipo do token->COMMA
 token->Waiter1     tipo do token->INDIVIDUAL_NAME
 token->,     tipo do token->COMMA
@@ -62,7 +66,9 @@ token->PizzaBase     tipo do token->CLASS_IDENTIFIERS
 token->,     tipo do token->COMMA
 token->hasCaloricContent     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
-token->xsd:integer     tipo do token->DATA_TYPE
+token->xsd     tipo do token->NAMESPACE_XSD
+token->:     tipo do token->COLON
+token->integer     tipo do token->INTEGER
 token->DisjointClasses:     tipo do token->DISJOINT_CLASSES_COLON
 token->Pizza     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
@@ -93,10 +99,12 @@ token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasCaloricContent     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
-token->xsd:integer     tipo do token->DATA_TYPE
+token->xsd     tipo do token->NAMESPACE_XSD
+token->:     tipo do token->COLON
+token->integer     tipo do token->INTEGER
 token->[     tipo do token->LEFT_BRACKET
 token->>=     tipo do token->GREATER_THAN
-token->400.0     tipo do token->CARDINALITY
+token->400.0     tipo do token->CARDINALITY_FLOAT
 token->]     tipo do token->RIGHT_BRACKET
 token->)     tipo do token->RIGHT_PAREN
 token->Class:     tipo do token->CLASS_COLON
@@ -107,7 +115,7 @@ token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasTopping     tipo do token->PROPERTY_IDENTIFIERS
 token->min     tipo do token->MIN
-token->3.0     tipo do token->CARDINALITY
+token->3     tipo do token->CARDINALITY_INTEGER
 token->PizzaTopping     tipo do token->CLASS_IDENTIFIERS
 token->)     tipo do token->RIGHT_PAREN
 token->Class:     tipo do token->CLASS_COLON
@@ -118,10 +126,12 @@ token->and     tipo do token->AND
 token->(     tipo do token->LEFT_PAREN
 token->hasCaloricContent     tipo do token->PROPERTY_IDENTIFIERS
 token->some     tipo do token->SOME
-token->xsd:integer     tipo do token->DATA_TYPE
+token->xsd     tipo do token->NAMESPACE_XSD
+token->:     tipo do token->COLON
+token->integer     tipo do token->INTEGER
 token->[     tipo do token->LEFT_BRACKET
 token-><     tipo do token->LESS_THAN
-token->400.0     tipo do token->CARDINALITY
+token->400.5     tipo do token->CARDINALITY_FLOAT
 token->]     tipo do token->RIGHT_BRACKET
 token->)     tipo do token->RIGHT_PAREN
 token->Class:     tipo do token->CLASS_COLON
@@ -319,7 +329,7 @@ token->{     tipo do token->LEFT_BRACE
 token->Hot     tipo do token->CLASS_IDENTIFIERS
 token->,      tipo do token->COMMA
 token->Medium     tipo do token->CLASS_IDENTIFIERS
-token->,     tipo do token->COMMA
+token->,      tipo do token->COMMA
 token->Mild     tipo do token->CLASS_IDENTIFIERS
 token->}     tipo do token->RIGHT_BRACE
 token->EOF     tipo do token->EOF
