@@ -57,5 +57,5 @@ Caso queira adicionar algum arquivo para teste basta adiciona-lo na pasta `/anal
 
 Certifique-se de seguir essas instruções para uma execução adequada do AnalisadorLex e para obter os resultados esperados.
 
-###**!!!!!!!!!!OBS!!!!!!!!!!**
+### OBS
 Essa gramática possui um erro, onde não é possivél utilizar o operador ONLY para fazer conexões entre propriedades e imagens de propriedade, tem um arquivo de exemplo para esse erro chamado **erroAnalisador.owl**
