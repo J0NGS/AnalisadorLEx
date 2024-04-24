@@ -1,5 +1,4 @@
 Class: AmericanaPizza
-   
     SubClassOf: 
         NamedPizza,
         hasTopping some MozzarellaTopping,
@@ -13,16 +12,13 @@ Class: AmericanaPizza
         AmericanaPizza1,
         AmericanaPizza2
 Class: NordestinaPizza
-   
     SubClassOf: 
         NamedPizza,
         hasTopping some MozzarellaTopping,
         hasTopping some CarneDeSolTopping,
         hasTopping some CoalhoTopping
-    
     DisjointClasses: 
         AmericanaHotPizza, AmericanaPizza, MargheritaPizza, SohoPizza
-    
     Individuals: 
         NordestinnaPizza1,
         NordestinnaPizza2
@@ -53,12 +49,25 @@ Class: Employee
 
     SubClassOf:
         Person
+         and (ssn min 1 xsd:string)
          and (hasTelefone some xsd:integer)
          and (hasMan some Man)
          and (hasTall some xsd:integer[>= 185])
 Class: Person
-
     SubClassOf:
         Human
         or Animal
         or Living
+Class: MargheritaPizza
+    SubClassOf:
+        NamedPizza,
+        hasTopping some MozzarellaTopping,
+        hasTopping some TomatoTopping,
+        hasTopping only (MozzarellaTopping or TomatoTopping)
+
+Class: Evaluated
+    EquivalentTo:
+        BrokerServiceProvider or Connector or CoreParticipant
+    SubClassOf:
+        FunctionalComplex
+

@@ -1,0 +1,4 @@
+Class: SpicyPizza
+    SubClassOf:
+    Pizza
+    and (hasTopping some (hasSpiciness value Hot))

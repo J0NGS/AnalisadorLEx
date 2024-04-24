@@ -20,7 +20,7 @@ public class TestLexer {
         // Caminhos dos arquivos
         String rootPath = Paths.get("").toAbsolutePath().toString();
         String subPath = "/analisadorlex/src/main/resources";
-        String sourceCode = rootPath + subPath + "/teste.OWL";
+        String sourceCode = rootPath + subPath + "/testeEnumerada.OWL";
         String outputFilePath = rootPath + subPath + "/tokens_output.txt";
         // Inicializa o analisador léxico
         Lexer lexical = new Lexer(new FileReader(sourceCode));

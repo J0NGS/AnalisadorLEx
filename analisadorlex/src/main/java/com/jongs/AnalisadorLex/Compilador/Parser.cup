@@ -10,7 +10,7 @@ parser code {:
         
         // Especifica o tipo de erro e o contexto
         String errorMessage = "Syntax Error at line " + (line + 1 ) + " - Token: " + token +"      |"+ message;
-        System.out.println(errorMessage);
+        System.out.println("\n==========================\n" + errorMessage + "\n");
     }
 
     public void report_fatal_error(String message, Object info)  {
@@ -22,7 +22,7 @@ parser code {:
         
         // Especifica o tipo de erro e o contexto
         String errorMessage = "Syntax Error at line " + (line + 1) + " - Token: " + token +"      |"+ message;
-        System.out.println(errorMessage);
+        System.out.println("\n==========================\n" + errorMessage + "\n");
         System.exit(-1);
     }
 
@@ -43,12 +43,16 @@ non terminal Object ClassOwl, ClassHeader, DisjointClasses, DisjointClassesDescr
 non terminal Object IndividualsList, DisjointAndIndividuals,PrimitiveClass, PrimitiveClassBody, PrimitiveClassBodyDescription, PrimitiveClassBodyList, LogicalConnector;
 non terminal Object PrimitiveClassBodyListItem, PrimitiveSomeItem, DataType, DataTypeInteger, DataTypeFloat, DataTypeString, Individuals;
 non terminal Object NameSpaceHeader, SubClassOfPrimitiveClass, PrimitiveClassBodyListItemPair, Property, ComparissonSign, Quantifier, EquivalentTo;
+non terminal Object ClosureClassBodyListItem, Min, Max, ClassIdentifierOrList, ClosureClassBody, Exactly, DefinedClass, EquivalentToPrimitiveClass, EnumeratedClass,EnumeratedClassBody;
+non terminal Object ClassIdentifierList, EnumeratedClassDescription, CoveredClass, CoveredClassDescription;
 precedence left NOT, AND, OR;   
+
 start with ClassOwl;
 
-ClassOwl::= PrimitiveClass ClassOwl | error | /*e*/;
+ClassOwl::= PrimitiveClass ClassOwl | DefinedClass ClassOwl | EnumeratedClass ClassOwl | CoveredClass ClassOwl | error | /*e*/;
 ClassHeader::= CLASS_COLON CLASS_IDENTIFIERS:i {:System.out.println("=========================\n" + "Nova classe detectada: " + i);:};
 
+/*----------------------------------DisjointClasses e Individuals----------------------------------*/
 
 DisjointClasses::= DISJOINT_CLASSES_COLON DisjointClassesDescription | /*e*/;
 DisjointClassesDescription::= DisjointClassesList | /*e*/;
@@ -58,23 +62,38 @@ IndividualsDescription::= IndividualsList | /*e*/;
 IndividualsList::= INDIVIDUAL_NAME COMMA IndividualsList | INDIVIDUAL_NAME; 
 DisjointAndIndividuals::= DisjointClasses Individuals;
 
+/*----------------------------------Propertys----------------------------------*/
 Property::= PROPERTY_IDENTIFIERS:p {:System.out.println("Nova propriedade detectada: " + p);:} | SSN:s {:System.out.println("Nova propriedade detectada: " + s);:}; 
 LogicalConnector::= AND:a {:System.out.println("Conectivo lógico encontrado: " + a);:} | OR:o {:System.out.println("Conectivo lógico encontrado: " + o);:} | NOT:n {:System.out.println("Conectivo lógico encontrado: " + n);:};
-PrimitiveSomeItem::= CLASS_IDENTIFIERS:c {:System.out.println("Classe como propriedade encontrada" + c + "\n" + "\n---OBJECT PROPERTY---\n");:} | DataType {:System.out.println("\n---DATA PROPERTY---\n");:} | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN;
+PrimitiveSomeItem::= CLASS_IDENTIFIERS:c {:System.out.println("Classe como propriedade encontrada: " + c + "\n" + "\n---OBJECT PROPERTY---\n");:} | DataType {:System.out.println("\n---DATA PROPERTY---\n");:} | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN{:System.out.println("\n---!!Classe Aninhada!!---\n");:};
 DataType::= DataTypeInteger | DataTypeFloat | DataTypeString;
 DataTypeInteger::= NameSpaceHeader COLON INTEGER:i {:System.out.println("Type integer encontrado: " + i);:} | NameSpaceHeader COLON INTEGER:i {:System.out.println("Type integer encontrado: " + i);:} LEFT_BRACKET ComparissonSign CARDINALITY_INTEGER:c {:System.out.println("Inteiro encontrado: " + c);:} RIGHT_BRACKET;
 DataTypeFloat::= NameSpaceHeader COLON FLOAT:f {:System.out.println("Type float encontrado: " + f);:} | NameSpaceHeader COLON FLOAT:f {:System.out.println("Type float encontrado: " + f);:} LEFT_BRACKET ComparissonSign CARDINALITY_FLOAT:c {:System.out.println("Float encontrado: " + c);:} RIGHT_BRACKET;
 DataTypeString::= NameSpaceHeader COLON STRING:s {:System.out.println("Type string encontrado: " + s);:};
 ComparissonSign::= GREATER_THAN | LESS_THAN | EQUAL | EQUAL_LESS_THAN | EQUAL_GREATER_THAN; 
 NameSpaceHeader::= NAMESPACE_OWL:o {:System.out.println("Namespace encontrado: " + o);:} | NAMESPACE_RDFS:r {:System.out.println("Namespace encontrado: " + r);:} | NAMESPACE_XSD:x {:System.out.println("Namespace encontrado: " + x);:};
-
+/*----------------------------------CoveredClass----------------------------------*/
+CoveredClass::= ClassHeader CoveredClassDescription DisjointAndIndividuals {:System.out.println("\n---!!Classe Coberta!!---\n");:};
+CoveredClassDescription::= CLASS_IDENTIFIERS OR CoveredClassDescription | CLASS_IDENTIFIERS;
+/*----------------------------------Classe enumerada----------------------------------*/
+EnumeratedClass::= ClassHeader EnumeratedClassDescription DisjointAndIndividuals {:System.out.println("\n---!!Classe Enumerada!!---\n");:};
+EnumeratedClassDescription::= EQUIVALENT_TO_COLON LEFT_BRACE ClassIdentifierList RIGHT_BRACE;
+ClassIdentifierList::= CLASS_IDENTIFIERS COMMA ClassIdentifierList | CLASS_IDENTIFIERS;
+/*----------------------------------Primitive Class, Nested Class, ClosureClass----------------------------------*/
 PrimitiveClass::= ClassHeader PrimitiveClassBody DisjointAndIndividuals {:System.out.println("\n---!!Classe primitiva!!---\n");:};
-PrimitiveClassBody::= SubClassOfPrimitiveClass;
+PrimitiveClassBody::= EquivalentToPrimitiveClass SubClassOfPrimitiveClass;
+EquivalentToPrimitiveClass::= EquivalentTo | /*e*/;
+EquivalentTo::= EQUIVALENT_TO_COLON PrimitiveClassBodyDescription;
+DefinedClass::= ClassHeader EquivalentTo DisjointAndIndividuals {:System.out.println("\n---!!Classe Definida!!---\n");:};
 SubClassOfPrimitiveClass::= SUBCLASS_OF_COLON PrimitiveClassBodyDescription;
 PrimitiveClassBodyDescription::= PrimitiveClassBodyList | /*e*/;
-PrimitiveClassBodyList::= PrimitiveClassBodyListItem COMMA PrimitiveClassBodyList | PrimitiveClassBodyListItem | PrimitiveClassBodyListItem LogicalConnector PrimitiveClassBodyList;
+PrimitiveClassBodyList::= PrimitiveClassBodyListItem COMMA PrimitiveClassBodyList | PrimitiveClassBodyListItem | PrimitiveClassBodyListItem LogicalConnector PrimitiveClassBodyList | ClosureClassBody;
 PrimitiveClassBodyListItem::= CLASS_IDENTIFIERS:c {:System.out.println("Classe como propriedade encontrada: " + c);:} | Property Quantifier PrimitiveSomeItem | LEFT_PAREN PrimitiveClassBodyListItem RIGHT_PAREN PrimitiveClassBodyListItemPair;
-Quantifier::= SOME | ALL;
-
-
+ClosureClassBody::= Property ONLY LEFT_PAREN ClosureClassBodyListItem RIGHT_PAREN {:System.out.println("\n---!!Classe Axioma de fechamento!!---\n");:};
+ClosureClassBodyListItem::= ClassIdentifierOrList | CLASS_IDENTIFIERS;
+ClassIdentifierOrList::= CLASS_IDENTIFIERS OR ClosureClassBodyListItem;
+Quantifier::= SOME | ALL | Min | Max | Exactly | VALUE;
+Min::= MIN CARDINALITY_INTEGER;
+Max::= MAX CARDINALITY_INTEGER;
+Max::= EXACTLY CARDINALITY_INTEGER;
 PrimitiveClassBodyListItemPair::= LogicalConnector PrimitiveClassBodyListItem | /*e*/;
