@@ -19,22 +19,30 @@ public class TestParser {
         System.out.println("Digite o nome do arquivo a passar pelo analisador sintático");
         String sourceFile = scn.nextLine(); 
         String sourceCode = rootPath + subPath + "/" + sourceFile;
-        
+        int option = 50;
 
         // Inicializa o analisador sintático
         parser parser = new parser(new Lexer(new FileReader(sourceCode)));
-        try {
-            // Faz o parsing do arquivo de entrada
-            parser.parse();
-            // Se a análise sintática for bem-sucedida, exibe o resultado
-            System.out.println("=========================");
-            System.out.println("Análise sintática concluída com sucesso.");
-            System.out.println("=========================");
-            System.out.println("Debug Parser: ");            
-            parser.debug_parse();
-        } catch (Exception e) {
-            // Em caso de erro, exibe a mensagem de erro
-            System.out.println("Erro durante a análise sintática: " + e.getMessage());
+        while (option != 0) {
+            try {
+                // Faz o parsing do arquivo de entrada
+                parser.parse();
+                // Se a análise sintática for bem-sucedida, exibe o resultado
+                System.out.println("=========================");
+                System.out.println("Análise sintática concluída com sucesso.");
+                System.out.println("=========================");
+                System.out.println("Debug Parser: ");            
+                parser.debug_parse();
+                System.out.println();
+                System.out.println();
+            } catch (Exception e) {
+                // Em caso de erro, exibe a mensagem de erro
+                System.out.println("Erro durante a análise sintática: " + e.getMessage());
+            }
+            System.out.println("Digite o nome do arquivo a passar pelo analisador sintático ou o número 0 para sair.");
+            sourceFile = scn.nextLine();
+            if (sourceFile.equals("0"))
+                option = 0;
         }
     }
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.jongs.AnalisadorLex.Compilador.Lexer;
 import com.jongs.AnalisadorLex.Compilador.sym;
@@ -20,7 +21,10 @@ public class TestLexer {
         // Caminhos dos arquivos
         String rootPath = Paths.get("").toAbsolutePath().toString();
         String subPath = "/analisadorlex/src/main/resources";
-        String sourceCode = rootPath + subPath + "/testeEnumerada.OWL";
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Digite o nome do arquivo a passar pelo analisador sintático");
+        String sourceFile = scn.nextLine();
+        String sourceCode = rootPath + subPath + "/" + sourceFile;
         String outputFilePath = rootPath + subPath + "/tokens_output.txt";
         // Inicializa o analisador léxico
         Lexer lexical = new Lexer(new FileReader(sourceCode));
@@ -34,13 +38,14 @@ public class TestLexer {
         Symbol symbol;
         int eof = 0;
         // Loop para processar todos os tokens
-        while ((symbol = lexical.next_token()) != null  && eof == 0) {
+        while ((symbol = lexical.next_token()) != null && eof == 0) {
             // Adiciona o token à lista
             token = symbol.value.toString();
-            tokenList.add("token->" + token + "     tipo do token->" + sym.terminalNames[symbol.sym] );
+            tokenList.add("token->" + token + "     tipo do token->" + sym.terminalNames[symbol.sym]);
 
             // Atualiza o contador de tokens
-            tokenCountMap.put(sym.terminalNames[symbol.sym], tokenCountMap.getOrDefault(sym.terminalNames[symbol.sym], 0) + 1);
+            tokenCountMap.put(sym.terminalNames[symbol.sym],
+                    tokenCountMap.getOrDefault(sym.terminalNames[symbol.sym], 0) + 1);
 
             // Exibe o token na linha de comando
             System.out.println("token->" + token);

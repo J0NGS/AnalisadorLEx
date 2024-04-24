@@ -1,0 +1,4 @@
+Class: Customer
+    EquivalentTo:
+        Person
+        and (hasPhone some xsd:string)

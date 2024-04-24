@@ -33,9 +33,9 @@ scan with {: return super.scan(); :};
 
 /*----------------------------------TOKENS----------------------------------*/
 terminal String SOME, ALL, VALUE, MIN, MAX, EXACTLY, THAT, NOT, AND, OR, ONLY, CLASS_COLON, EQUIVALENT_TO_COLON, INDIVIDUALS_COLON, SUBCLASS_OF_COLON;
-terminal String DISJOINT_CLASSES_COLON, CLASS_IDENTIFIERS, INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, NAMESPACE_OWL, NAMESPACE_RDFS, NAMESPACE_XSD;
+terminal String DISJOINT_CLASSES_COLON, INDIVIDUAL_NAME, PROPERTY_IDENTIFIERS, NAMESPACE_OWL, NAMESPACE_RDFS, NAMESPACE_XSD;
 terminal String COMMENT, LEFT_BRACE, RIGHT_BRACE, LEFT_PAREN, RIGHT_PAREN, LEFT_BRACKET, RIGHT_BRACKET, GREATER_THAN, LESS_THAN, EQUAL, EQUAL_LESS_THAN;
-terminal String EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFERS, INTEGER, FLOAT, STRING, COLON, INVERSE;
+terminal String EQUAL_GREATER_THAN, DOUBLE_QUOTE, BROKEN_LINE, COMMA, SSN, CLASS_IDENTIFIERS, INTEGER, FLOAT, STRING, COLON, INVERSE;
 terminal Float CARDINALITY_FLOAT;
 terminal Integer CARDINALITY_INTEGER; 
 /*----------------------------------PRODUÇÕES----------------------------------*/
@@ -44,8 +44,8 @@ non terminal Object IndividualsList, DisjointAndIndividuals,PrimitiveClass, Prim
 non terminal Object PrimitiveClassBodyListItem, PrimitiveSomeItem, DataType, DataTypeInteger, DataTypeFloat, DataTypeString, Individuals;
 non terminal Object NameSpaceHeader, SubClassOfPrimitiveClass, PrimitiveClassBodyListItemPair, Property, ComparissonSign, Quantifier, EquivalentTo;
 non terminal Object ClosureClassBodyListItem, Min, Max, ClassIdentifierOrList, ClosureClassBody, Exactly, DefinedClass, EquivalentToPrimitiveClass, EnumeratedClass,EnumeratedClassBody;
-non terminal Object ClassIdentifierList, EnumeratedClassDescription, CoveredClass, CoveredClassDescription;
-precedence left NOT, AND, OR;   
+non terminal Object ClassIdentifierList, EnumeratedClassDescription, CoveredClass, CoveredClassDescription, Only;
+precedence left NOT, AND, OR, ONLY;   
 
 start with ClassOwl;
 

@@ -24,8 +24,8 @@ Class: Employee
          and (ssn min 1 xsd:string)
     
     Individuals:
-        Chef,
-        Manager,
+        Chef1,
+        Manager1,
         Waiter1,
         Waiter2
 
@@ -55,7 +55,7 @@ Class: HighCaloriePizza
 
     EquivalentTo: 
         Pizza
-         and (hasCaloricContent some xsd:integer[>= 400.0])
+         and (hasCaloricContent some xsd:integer[>= 400])
 
 Class: InterestingPizza
 
@@ -67,7 +67,7 @@ Class: LowCaloriePizza
 
     EquivalentTo: 
         Pizza
-         and (hasCaloricContent some xsd:integer[< 400.50])
+         and (hasCaloricContent some xsd:integer[< 400])
 
 Class: NamedPizza
 
@@ -146,23 +146,6 @@ Class: SpicyPizza
     EquivalentTo:
         Pizza
          and (hasTopping some (hasSpiciness value Hot))
-
-Class: VegetarianPizza
-
-    EquivalentTo:
-        Pizza
-         and (hasTopping only 
-            (CheeseTopping or VegetableTopping))
-
-Class: PizzaBase
-
-    DisjointClasses:
-        Pizza, PizzaBase, PizzaTopping
-
-Class: PizzaTopping
-
-    DisjointClasses:
-        Pizza, PizzaBase, PizzaTopping
 
 Class: Spiciness
 

@@ -11,6 +11,7 @@ Class: AmericanaPizza
     Individuals: 
         AmericanaPizza1,
         AmericanaPizza2
+        
 Class: NordestinaPizza
     SubClassOf: 
         NamedPizza,
