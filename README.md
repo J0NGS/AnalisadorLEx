@@ -51,12 +51,11 @@ Para executar o programa, siga os seguintes passos:
 4. Digite o nome do arquivo de teste que deseja inserir, por exemplo, `testeDefinida.owl`.
 
 Após a execução do analisador léxico, na pasta central do projeto em `/analisadorlex/src/main/java/com/jongs/AnalisadorLex/resources`, será gerado um arquivo chamado **token_output.txt**. Este arquivo conterá todos os tokens lidos durante a execução do programa.
-
 Caso execute o analisador sintático, ele não produzirá nenhum arquvio de saída, mas exbirar toda a análise sintática no cmd.
-
-**!!!!!!!!!!OBS!!!!!!!!!!**
-Essa gramática possui um erro, onde não é possivél utilizar o operador ONLY para fazer conexões entre propriedades e imagens de propriedade, tem um arquivo de exemplo para esse erro chamado **erroAnalisador.owl**
 ### Arquivos OWL Personalizados
 Caso queira adicionar algum arquivo para teste basta adiciona-lo na pasta `/analisadorlex/src/main/java/com/jongs/AnalisadorLex/resources` que ele ficará disponível para a execução
 
 Certifique-se de seguir essas instruções para uma execução adequada do AnalisadorLex e para obter os resultados esperados.
+
+###**!!!!!!!!!!OBS!!!!!!!!!!**
+Essa gramática possui um erro, onde não é possivél utilizar o operador ONLY para fazer conexões entre propriedades e imagens de propriedade, tem um arquivo de exemplo para esse erro chamado **erroAnalisador.owl**
