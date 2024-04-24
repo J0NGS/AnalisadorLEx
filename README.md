@@ -21,11 +21,11 @@ O Compilador OWL Classes é um analisador léxico junto com um sintático desenv
 ## Tratamentos semânticos
 O analisador sintático suporta 3 tipos de tratamentos semânticos que foram definidos, todos eles possuem um arquivo de teste e um arquivo "correto" que são os arquivos de teste sem o erro proposital que eles possuem.
 
-1. **ANÁLISE DA PRECEDÊNCIA DOS OPERADORES** - erroPrecedencia1.owl, erroPrecedencia2.owl, Precedencia1.owl, Precedencia2.owl.
+1. **ANÁLISE DA PRECEDÊNCIA DOS OPERADORES** - `erroPrecedencia1.owl`, `erroPrecedencia2.owl`, `Precedencia1.owl`, `Precedencia2.owl`.
 
-2. **VERIFICAÇÃO ESTÁTICA DE TIPOS POR COERÇÃO** - erroCoercao1.owl, erroCoercao2.owl, Coercao1.owl, Coercao2.owl.
+2. **VERIFICAÇÃO ESTÁTICA DE TIPOS POR COERÇÃO** - `erroCoercao1.owl`, `erroCoercao2.owl`, `Coercao1.owl`, `Coercao2.owl`.
 
-3. **VERIFICAÇÃO ESTÁTICA DE TIPOS POR SOBRECARREGAMENTO** - dataProperty.owl, objectProperty.owl.
+3. **VERIFICAÇÃO ESTÁTICA DE TIPOS POR SOBRECARREGAMENTO** - `dataProperty.owl`, `objectProperty.owl`.
 
 
 além disso o projeto tem outros arquivos de teste que são eles: 
